@@ -33,6 +33,7 @@ const columns = [
     title: 'Get started',
     links: [
       { label: 'Request a Demo', href: '/contact' },
+      { label: 'Book a Demo', href: '/book-a-demo' },
       { label: 'Savings analysis', href: '/pricing' },
       { label: 'Why Miraee', href: '/why-miraee' },
     ],

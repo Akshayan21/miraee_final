@@ -19,7 +19,7 @@ const CARDS = [
   {
     color: 'var(--color-mi-amber-text)',
     title: 'AUDIT TRAILS',
-    body: 'Approvals route to humans, policies are strictly enforced, and managers or people teams are notified only when an intervention truly matters.',
+    body: 'Approvals route to humans, policies are strictly enforced, and managers or HR teams are notified only when an intervention truly matters.',
   },
 ];
 

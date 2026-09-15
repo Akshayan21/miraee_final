@@ -50,6 +50,7 @@ export const router = createBrowserRouter([
       { path: 'company', element: <CompanyRoute /> },
       { path: 'careers', element: <CareersRoute /> },
       { path: 'contact', element: <ContactRoute /> },
+      { path: 'book-a-demo', element: <ContactRoute /> },
       { path: 'resources', element: <ResourcesRoute /> },
       { path: 'terms-and-conditions', element: <TermsRoute /> },
       { path: 'privacy-policy', element: <PrivacyPolicyRoute /> },

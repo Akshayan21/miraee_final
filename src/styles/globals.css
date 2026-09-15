@@ -24,6 +24,31 @@
 .light .legal-intake-form :is(input, textarea) {
   background-color: color-mix(in srgb, var(--color-background-dark) 12%, transparent);
 }
+@media (max-width: 639px) {
+  .legal-intake-form {
+    border-radius: 20px;
+    padding: 16px;
+  }
+  .legal-intake-form h2 {
+    margin-top: 28px;
+    padding-bottom: 10px;
+    font-size: .68rem;
+  }
+  .legal-intake-form label {
+    overflow-wrap: anywhere;
+  }
+  .legal-intake-form :is(input, textarea) {
+    border-radius: 12px;
+    padding: 12px 13px;
+    font-size: .9rem;
+  }
+  .legal-intake-form textarea {
+    min-height: 116px;
+  }
+  .legal-intake-form .bg-white {
+    border-radius: 14px;
+  }
+}
 .legal-page {
   color: var(--color-mi-cream);
 }

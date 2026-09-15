@@ -11,7 +11,7 @@ const POINTS = [
   },
   {
     title: 'ONE CONSOLE FOR THE RESPONSE',
-    body: 'Duty of care runs from the same screen, so travel leads, admins and people teams act on the same picture.',
+    body: 'Duty of care runs from the same screen, so travel leads, admins and HR teams act on the same picture.',
   },
 ];
 

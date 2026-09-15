@@ -14,7 +14,7 @@ type Field = {
 };
 
 const inputClass =
-  'mt-2 w-full rounded-xl border border-mi-cream/16 bg-background-dark/70 px-4 py-3 font-mi-body text-[.95rem] text-mi-cream outline-none transition focus:border-mi-orange focus:ring-2 focus:ring-mi-orange/20 placeholder:text-mi-cream/45';
+  'mt-2 min-w-0 w-full rounded-xl border border-mi-cream/16 bg-background-dark/70 px-4 py-3 font-mi-body text-[.95rem] text-mi-cream outline-none transition focus:border-mi-orange focus:ring-2 focus:ring-mi-orange/20 placeholder:text-mi-cream/45';
 const labelClass = 'block font-mi-body text-[.84rem] leading-[1.35] font-semibold text-background-dark';
 
 const disputeFields: Field[] = [
@@ -94,22 +94,22 @@ export function LegalIntakeForm({ kind }: { kind: FormKind }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="legal-intake-form rounded-[28px] border border-mi-cream/14 bg-background-deep p-[clamp(22px,3vw,42px)] text-mi-cream shadow-[0_24px_70px_rgba(0,0,0,.2)]" noValidate>
+    <form onSubmit={handleSubmit} className="legal-intake-form w-full min-w-0 rounded-[28px] border border-mi-cream/14 bg-background-deep p-[clamp(18px,3vw,42px)] text-mi-cream shadow-[0_24px_70px_rgba(0,0,0,.2)]" noValidate>
       <SectionTitle>{isDispute ? 'YOUR INFORMATION' : 'ACCOUNT INFORMATION'}</SectionTitle>
-      <div className="mt-6 grid gap-5 sm:grid-cols-2">
+      <div className="mt-6 grid min-w-0 gap-5 sm:grid-cols-2">
         {fields.slice(0, isDispute ? 5 : 4).map((field) => <FieldInput key={field.name} field={field} value={values[field.name] ?? ''} onChange={setValue} />)}
       </div>
 
       {isDispute && (
         <>
           <SectionTitle>DISPUTE INFORMATION</SectionTitle>
-          <div className="mt-6 grid gap-5 sm:grid-cols-2">
+          <div className="mt-6 grid min-w-0 gap-5 sm:grid-cols-2">
             {fields.slice(5).map((field) => <FieldInput key={field.name} field={field} value={values[field.name] ?? ''} onChange={setValue} />)}
           </div>
 
           <SectionTitle>SUPPORTING DOCUMENTS</SectionTitle>
           <p className="mt-4 font-mi-body text-[.92rem] leading-[1.6] text-background-dark/68">Upload receipts, invoices, screenshots, correspondence, booking records, or account statements. PDF, PNG, and JPG accepted.</p>
-          <label className="mt-4 flex cursor-pointer items-center justify-between gap-4 rounded-2xl border border-dashed border-background-dark/24 bg-white px-4 py-4 font-mi-body text-[.9rem] font-semibold text-background-dark transition hover:border-mi-orange focus-within:border-mi-orange focus-within:ring-2 focus-within:ring-mi-orange/20">
+          <label className="mt-4 flex min-w-0 flex-wrap cursor-pointer items-center justify-between gap-3 rounded-2xl border border-dashed border-background-dark/24 bg-white px-4 py-4 font-mi-body text-[.9rem] font-semibold text-background-dark transition hover:border-mi-orange focus-within:border-mi-orange focus-within:ring-2 focus-within:ring-mi-orange/20">
             <span>{files.length ? `${files.length} file${files.length === 1 ? '' : 's'} selected` : 'Choose supporting documents'}</span>
             <span className="rounded-full bg-mi-orange/10 px-3 py-1 text-[.75rem] text-mi-scarlet">Browse files</span>
             <input className="sr-only" type="file" accept=".pdf,.png,.jpg,.jpeg" multiple onChange={handleFiles} />
@@ -154,7 +154,7 @@ export function LegalIntakeForm({ kind }: { kind: FormKind }) {
       </label>
 
       <SectionTitle>ELECTRONIC SIGNATURE</SectionTitle>
-      <div className="mt-5 grid gap-5 sm:grid-cols-2">
+      <div className="mt-5 grid min-w-0 gap-5 sm:grid-cols-2">
         <FieldInput field={{ name: 'signature', label: 'Electronic signature', required: true, placeholder: 'Type your full legal name' }} value={values.signature ?? ''} onChange={setValue} />
         <div className={labelClass}>
           <span>Date</span>
@@ -180,7 +180,7 @@ function FieldInput({ field, value, onChange }: { field: Field; value: string; o
 }
 
 function RadioGroup({ name, value, onChange, options, required = false }: { name: string; value: string; onChange: (name: string, value: string) => void; options: string[]; required?: boolean }) {
-  return <div className="mt-5 grid gap-3">{options.map((option, index) => <label key={option} className="flex cursor-pointer items-start gap-3 rounded-2xl border border-background-dark/12 bg-white p-4 font-mi-body text-[.9rem] leading-[1.45] text-background-dark transition hover:border-mi-orange">
+  return <div className="mt-5 grid min-w-0 gap-3">{options.map((option, index) => <label key={option} className="flex min-w-0 cursor-pointer items-start gap-3 rounded-2xl border border-background-dark/12 bg-white p-3.5 font-mi-body text-[.9rem] leading-[1.45] text-background-dark transition hover:border-mi-orange sm:p-4">
     <input type="radio" name={name} value={option} required={required && index === 0} checked={value === option} onChange={(event) => onChange(name, event.target.value)} className="mt-0.5 size-4 accent-mi-scarlet" />
     {option}
   </label>)}</div>;

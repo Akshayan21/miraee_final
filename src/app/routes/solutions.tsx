@@ -12,7 +12,7 @@ import { SolutionsClosingCta } from '@/components/sections/solutions/closing-cta
 export default function SolutionsRoute() {
   usePageMeta(
     'Solutions by Role and Use Case | Miraee',
-    'One platform, six views. What changes for employees, finance, travel leads, admins, people teams and managers, plus every kind of company travel.',
+    'One platform, six views. What changes for employees, finance, travel leads, admins, HR teams and managers, plus every kind of company travel.',
   );
 
   return (

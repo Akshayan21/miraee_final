@@ -7,7 +7,7 @@ const PILLS = [
   { label: 'Finance', href: '#finance' },
   { label: 'Travel Leads', href: '#travel-leads' },
   { label: 'Admins', href: '#admins' },
-  { label: 'People Teams', href: '#people' },
+  { label: 'HR Teams', href: '#people' },
 ];
 
 export function SolutionsHero() {
@@ -25,7 +25,7 @@ export function SolutionsHero() {
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-8 max-w-[54ch] text-pretty font-mi-body text-[clamp(1.05rem,1.3vw,1.24rem)] leading-[1.55] text-mi-cream/74">
-            What changes for employees, managers, finance, travel leads, admins and people teams —
+            What changes for employees, managers, finance, travel leads, admins and HR teams —
             and every kind of company travel.
           </p>
         </Reveal>

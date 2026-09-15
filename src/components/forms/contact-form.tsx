@@ -5,6 +5,8 @@ type FormState = {
   lastName: string;
   workEmail: string;
   companyName: string;
+  role: string;
+  notes: string;
 };
 
 const INITIAL_STATE: FormState = {
@@ -12,6 +14,8 @@ const INITIAL_STATE: FormState = {
   lastName: '',
   workEmail: '',
   companyName: '',
+  role: '',
+  notes: '',
 };
 
 const inputClass =
@@ -31,7 +35,7 @@ export function ContactForm() {
 
   function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    const isValid = Object.values(values).every((value) => value.trim().length > 0);
+    const isValid = values.firstName.trim() && values.lastName.trim() && values.workEmail.trim() && values.companyName.trim() && values.role.trim();
     if (!isValid) return;
     setSubmitted(true);
   }
@@ -44,10 +48,10 @@ export function ContactForm() {
 
       {submitted ? (
         <p className="mt-6 font-mi-accent text-[1.15rem] leading-[1.4] font-bold text-mi-cream">
-          Thank you — we&rsquo;ll be in touch
+          Demo request received. We&rsquo;ll be in touch.
         </p>
       ) : (
-        <form className="mt-6" onSubmit={handleSubmit} noValidate>
+        <form className="mt-6 pb-2" onSubmit={handleSubmit} noValidate>
           <div className="grid grid-cols-[repeat(auto-fit,minmax(min(180px,100%),1fr))] gap-4">
             <label className={labelClass}>
               <span>FIRST NAME</span>
@@ -96,11 +100,21 @@ export function ContactForm() {
               />
             </label>
           </div>
+          <div className="mt-4 grid gap-4">
+            <label className={labelClass}>
+              <span>YOUR ROLE</span>
+              <input type="text" placeholder="Travel or finance lead" required value={values.role} onChange={handleChange('role')} className={inputClass} />
+            </label>
+            <label className={labelClass}>
+              <span>WHAT SHOULD WE COVER? <em className="font-normal not-italic text-mi-cream/40">(OPTIONAL)</em></span>
+              <input type="text" placeholder="Policy, booking, expenses…" value={values.notes} onChange={handleChange('notes')} className={inputClass} />
+            </label>
+          </div>
           <button
             type="submit"
-            className="mt-6 h-[54px] w-full cursor-pointer rounded-2xl border-0 bg-mi-scarlet font-mi-body text-[.95rem] font-bold text-white"
+            className="mt-6 h-[54px] w-full cursor-pointer rounded-2xl border-0 bg-mi-scarlet font-mi-body text-[.95rem] font-bold text-white transition-colors hover:bg-mi-orange focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-mi-orange active:translate-y-px"
           >
-            Request a Demo
+            Book a Demo
           </button>
           <p className="mt-4 font-mi-body text-[.8rem] leading-[1.55] text-mi-cream/50">
             Twenty minutes with your policy and your routes. Bring a real trip.
