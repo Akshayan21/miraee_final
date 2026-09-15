@@ -14,6 +14,17 @@ export function NavBar() {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    setOpen(false);
+  }, [pathname]);
+
+  useEffect(() => {
+    const desktop = window.matchMedia('(min-width: 1280px)');
+    const closeOnDesktop = () => { if (desktop.matches) setOpen(false); };
+    desktop.addEventListener('change', closeOnDesktop);
+    return () => desktop.removeEventListener('change', closeOnDesktop);
+  }, []);
+
+  useEffect(() => {
     function onScroll() {
       setScrolled(window.scrollY > 12);
     }
@@ -34,10 +45,10 @@ export function NavBar() {
     <>
       <header
         className={cn(
-          'fixed inset-x-0 top-0 z-[80] border-b py-3.5 transition-[background-color,backdrop-filter,padding,border-color] duration-500 sm:py-[18px]',
+          'fixed inset-x-0 top-0 z-[100] border-b py-3.5 transition-[background-color,backdrop-filter,padding,border-color] duration-500 [will-change:background-color,backdrop-filter,padding] sm:py-[18px]',
           (scrolled || pathname === '/terms-and-conditions' || pathname === '/privacy-policy')
             ? 'border-mi-cream/10 bg-background-dark/85 py-2.5 backdrop-blur-md sm:py-3'
-            : 'border-transparent bg-transparent',
+            : 'border-mi-cream/10 bg-background-dark',
         )}
       >
         <div className="mx-auto flex w-[min(1360px,100%-2*clamp(16px,4vw,64px))] items-center gap-3 sm:gap-6">
@@ -51,7 +62,7 @@ export function NavBar() {
 
           <nav
             aria-label="Primary"
-            className="hidden flex-1 items-center justify-center gap-1 font-mi-body text-sm font-semibold lg:flex"
+            className="hidden flex-1 items-center justify-center gap-1 whitespace-nowrap font-mi-body text-sm font-semibold xl:flex"
           >
             {primaryNav.map((item) => {
               const active = pathname === item.href;
@@ -102,7 +113,8 @@ export function NavBar() {
               aria-label={open ? 'Close menu' : 'All pages'}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="relative flex size-10 flex-none items-center justify-center rounded-2xl border border-mi-cream/16 bg-transparent transition-colors hover:border-mi-cream/30 hover:bg-mi-cream/5 sm:size-[42px] lg:hidden"
+              aria-controls="site-menu"
+              className="relative flex size-10 flex-none items-center justify-center rounded-2xl border border-mi-cream/16 bg-transparent transition-colors hover:border-mi-cream/30 hover:bg-mi-cream/5 sm:size-[42px] xl:hidden"
             >
               <i
                 className={cn(
@@ -122,8 +134,11 @@ export function NavBar() {
       </header>
 
       <div
+        id="site-menu"
+        data-lenis-prevent
+        inert={!open}
         className={cn(
-          'fixed inset-0 z-[75] flex flex-col overflow-y-auto bg-background-deep pt-[clamp(84px,12vh,112px)] pb-8 transition-[opacity,transform,visibility] duration-500 ease-(--motion-ease)',
+          'fixed inset-0 z-[75] flex flex-col overflow-y-auto overscroll-contain bg-background-deep pt-[clamp(84px,12vh,112px)] pb-8 transition-[opacity,transform,visibility] duration-500 ease-(--motion-ease) xl:hidden',
           open ? 'visible translate-y-0 opacity-100' : 'invisible -translate-y-3.5 opacity-0',
         )}
       >
