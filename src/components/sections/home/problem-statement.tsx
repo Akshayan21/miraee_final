@@ -45,7 +45,7 @@ export function ProblemStatement() {
             </Reveal>
             <Reveal delay={80}>
               <h2 className="mt-5 max-w-[22ch] text-balance font-mi-accent text-[clamp(1.9rem,3.6vw,3.2rem)] leading-[1.06] font-bold tracking-[-0.035em]">
-                Corporate Travel Should Not Be a Second Job.
+                Business Travel Should Not Be a Second Job.
               </h2>
             </Reveal>
             <Reveal delay={160}>

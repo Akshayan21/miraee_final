@@ -1,5 +1,10 @@
 import type { CSSProperties } from 'react';
 import { Reveal } from '@/components/motion/reveal';
+import mondeeLogo from '@/assets/images/mondee_logo.png';
+import miraeeLogo from '@/assets/Miraee_Logo.png';
+// Abhee has separate light/dark-bg logo files; this section's cards are always
+// light (white), so the dark-text ("-dark") variant is the correct one here.
+import abheeLogo from '@/assets/images/abhee-logo-dark.png';
 
 const COMPANIES = [
   {
@@ -7,18 +12,21 @@ const COMPANIES = [
     eyebrowColor: '#CC3600',
     title: 'The agentic AI travel marketplace.',
     highlight: false,
+    logo: mondeeLogo,
   },
   {
     eyebrow: 'MIRAEE · B2E',
     eyebrowColor: '#F25C05',
     title: 'The employee travel platform.',
     highlight: true,
+    logo: miraeeLogo,
   },
   {
     eyebrow: 'ABHEE · B2C',
     eyebrowColor: '#CC3600',
     title: 'The hyperlocal experiential marketplace.',
     highlight: false,
+    logo: abheeLogo,
   },
 ];
 
@@ -65,8 +73,9 @@ export function GroupCompanies() {
               }
               style={{ '--color-background-dark': '#150b08' } as CSSProperties}
             >
+              <img src={company.logo} alt={company.eyebrow.split(' · ')[0]} className="h-6 w-auto object-contain" />
               <div
-                className="font-mi-body text-[.66rem] font-bold tracking-[0.12em]"
+                className="mt-3 font-mi-body text-[.66rem] font-bold tracking-[0.12em]"
                 style={{ color: company.eyebrowColor }}
               >
                 {company.eyebrow}

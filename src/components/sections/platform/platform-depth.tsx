@@ -36,7 +36,7 @@ export function PlatformDepth() {
         </Reveal>
         <Reveal delay={140} className="mt-[clamp(28px,4vw,48px)]">
           <figure className="relative m-0 aspect-[16/7] overflow-hidden rounded-[32px] border border-mi-cream/12 bg-mi-cream/4">
-            <img {...photography['platform-duty-of-care']} sizes="(min-width: 1440px) 700px, (min-width: 1024px) 50vw, (min-width: 768px) 700px, calc(100vw - 40px)" decoding="async" alt="Business traveller moving through a rail station" className="size-full object-cover" loading="lazy" />
+            <img {...photography['platform-duty-of-care']} sizes="(min-width: 1440px) 700px, (min-width: 1024px) 50vw, (min-width: 768px) 700px, calc(100vw - 40px)" decoding="async" alt="Business traveller moving through a rail station" className="size-full object-cover object-top" loading="lazy" />
             <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-gradient-to-r from-background-dark/35 via-transparent to-transparent" />
           </figure>
         </Reveal>

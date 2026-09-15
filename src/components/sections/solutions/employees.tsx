@@ -1,7 +1,6 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { Reveal } from '@/components/motion/reveal';
 import travelerImage from '@/assets/images/platform-human-care-480.webp';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -24,6 +23,9 @@ const CARDS = [
 export function Employees() {
   const barRef = useRef<HTMLDivElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
+  const stageRef = useRef<HTMLDivElement>(null);
+  const headingRef = useRef<HTMLDivElement>(null);
+  const viewportRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -43,25 +45,38 @@ export function Employees() {
         );
       }
 
-      if (cardsRef.current) {
-        const cards = cardsRef.current.querySelectorAll('[data-card]');
-        gsap.fromTo(
-          cards,
-          { autoAlpha: 0, x: 36, scale: 0.96 },
-          {
-            autoAlpha: 1,
-            x: 0,
-            scale: 1,
-            duration: 0.8,
-            ease: 'power3.out',
-            stagger: 0.12,
-            scrollTrigger: { trigger: cardsRef.current, start: 'top 78%' },
-          },
-        );
-      }
     });
 
-    return () => ctx.revert();
+    const media = gsap.matchMedia();
+    media.add('(min-width: 1024px) and (min-height: 700px) and (prefers-reduced-motion: no-preference)', () => {
+      const stage = stageRef.current;
+      const heading = headingRef.current;
+      const viewport = viewportRef.current;
+      const cards = cardsRef.current;
+      if (!stage || !heading || !viewport || !cards) return;
+
+      // Keep the introduction centered while the right column scrolls with the page.
+      // Release it when the final card reaches the bottom of the pinned introduction.
+      const pinTop = () => Math.max(104, (window.innerHeight - heading.offsetHeight) / 2);
+      ScrollTrigger.create({
+        trigger: heading,
+        start: () => `top ${pinTop()}px`,
+        endTrigger: cards,
+        end: () => `bottom ${pinTop() + heading.offsetHeight}px`,
+        pin: heading,
+        pinSpacing: false,
+        invalidateOnRefresh: true,
+      });
+    });
+    let disposed = false;
+    void document.fonts.ready.then(() => {
+      if (!disposed) ScrollTrigger.refresh();
+    });
+    return () => {
+      disposed = true;
+      media.revert();
+      ctx.revert();
+    };
   }, []);
 
   return (
@@ -71,31 +86,32 @@ export function Employees() {
           ref={barRef}
           className="mb-[clamp(28px,4vw,48px)] h-0.5 bg-gradient-to-r from-mi-orange via-mi-amber to-mi-rust"
         />
-        <div className="grid grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] items-start gap-[clamp(28px,4vw,64px)]">
-          <div className="lg:sticky lg:top-28 lg:self-start">
-            <Reveal className="font-mi-body text-[.7rem] font-bold tracking-[0.14em] text-[#FF69AD]">
+        <div ref={stageRef} className="grid items-start gap-10 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] lg:gap-16">
+          <div ref={headingRef} className="min-w-0 py-6 text-center lg:text-left">
+            <div className="font-mi-body text-[.7rem] font-bold tracking-[0.14em] text-[#FF69AD]">
               FOR EMPLOYEES
-            </Reveal>
-            <Reveal delay={80}>
-              <h2 className="mt-4.5 max-w-[22ch] font-mi-accent text-[clamp(1.8rem,3.4vw,3rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+            </div>
+            <div>
+              <h2 className="mx-auto mt-4.5 max-w-[26ch] font-mi-accent text-[clamp(1.8rem,3.4vw,3rem)] leading-[1.06] font-bold tracking-[-0.035em]">
                 Meet your hands-free travel assistant.
               </h2>
-            </Reveal>
-            <Reveal delay={160}>
-              <p className="mt-5 max-w-[46ch] text-pretty font-mi-body text-[1.04rem] leading-[1.6] text-mi-cream/74">
+            </div>
+            <div>
+              <p className="mx-auto mt-5 max-w-[60ch] text-pretty font-mi-body text-[1.04rem] leading-[1.6] text-mi-cream/74">
                 Voice, text or avatar. Your preferences, past trips and policy tier are known
                 before you make your first request.
               </p>
-            </Reveal>
-            <Reveal delay={240}>
+            </div>
+            <div>
               <a
                 href="/contact"
                 className="mt-6 inline-block border-b border-mi-orange/50 pb-1 font-mi-body text-[.88rem] font-bold text-mi-orange no-underline"
               >
                 Explore the Traveler solution →
               </a>
-            </Reveal>
+            </div>
           </div>
+          <div ref={viewportRef} className="mx-auto w-full min-w-0 max-w-[760px]">
           <div ref={cardsRef} className="grid gap-3.5">
             <div data-card className="relative mb-1 aspect-[16/8] overflow-hidden rounded-[24px] border border-[#FF69AD]/30">
               <img src={travelerImage} alt="Traveller preparing for a trip" className="size-full object-cover object-center" />
@@ -128,6 +144,7 @@ export function Employees() {
                 card at exclusive fares, walled off from company visibility.
               </p>
             </div>
+          </div>
           </div>
         </div>
       </div>

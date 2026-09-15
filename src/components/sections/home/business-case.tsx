@@ -17,7 +17,6 @@ export function BusinessCase() {
       />
       <div className="relative mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
         <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-background-dark/50">
-          <b className="font-mi-body text-[.82rem] font-bold text-mi-scarlet">04</b>
           THE BUSINESS CASE
         </Reveal>
         <div className="mt-[clamp(28px,4vw,52px)] grid items-center gap-[clamp(32px,5vw,80px)] lg:grid-cols-[minmax(0,.9fr)_minmax(420px,1.1fr)]">

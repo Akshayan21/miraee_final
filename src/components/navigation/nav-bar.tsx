@@ -150,7 +150,7 @@ export function NavBar() {
           </ol>
           <div className="flex flex-col gap-8 border-t border-mi-cream/10 pt-8 sm:border-t-0 sm:pt-0">
             <div className="font-mi-body text-[.95rem] leading-[1.9] text-mi-cream/72">
-              <span className="font-mi-script text-[1.3rem] text-mi-orange">Travel Limitless</span>
+              <span className="font-mi-script text-[2rem] text-mi-orange">Travel Limitless</span>
               <br />
               Miraee · the employee travel platform
               <br />

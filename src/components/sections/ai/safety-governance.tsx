@@ -1,5 +1,5 @@
 import { Reveal } from '@/components/motion/reveal';
-import peopleImage from '@/assets/images/platform-duty-of-care-800.webp';
+import peopleImage from '@/assets/images/solutions-hero-shared-view-1200.webp';
 
 const CARDS = [
   {
@@ -43,10 +43,9 @@ export function SafetyGovernance() {
         </Reveal>
 
         <Reveal delay={200} className="mt-8 overflow-hidden rounded-[clamp(22px,3vw,28px)] border border-background-dark/14">
-          <div className="relative min-h-40 h-[clamp(10rem,22vw,14rem)]">
-            <img src={peopleImage} alt="People reviewing travel decisions together" className="size-full object-cover object-center" loading="lazy" />
-            <div className="absolute inset-0 bg-gradient-to-r from-mi-cream via-mi-cream/20 to-transparent" />
-            <p className="absolute bottom-4 left-4 max-w-[26ch] font-mi-accent text-[clamp(1rem,2.5vw,1.25rem)] leading-[1.15] font-semibold text-background-dark sm:bottom-5 sm:left-6">The final call stays with the people who own the outcome.</p>
+          <div className="grid items-center bg-background-dark/4 md:grid-cols-[2fr_3fr]">
+            <p className="p-6 font-mi-accent text-[clamp(1.1rem,2.5vw,1.8rem)] leading-[1.25] font-semibold text-background-dark sm:p-8">The final call stays with the people who own the outcome.</p>
+            <img src={peopleImage} alt="Colleagues reviewing travel plans together around a table with a laptop and tablet" className="aspect-[16/10] w-full object-cover object-top" width={1200} height={900} loading="lazy" decoding="async" />
           </div>
         </Reveal>
 

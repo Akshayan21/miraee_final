@@ -1,5 +1,5 @@
 import { Reveal } from '@/components/motion/reveal';
-import peopleImage from '@/assets/images/business-case-people-1200.webp';
+import { photography } from '@/content/photography';
 
 const PILLS = [
   { label: 'Employees', href: '#employees' },
@@ -48,7 +48,7 @@ export function SolutionsHero() {
         </Reveal>
         </div>
         <Reveal delay={180} className="relative aspect-[4/3] w-full overflow-hidden rounded-[clamp(22px,3vw,32px)] border border-mi-cream/14">
-          <img src={peopleImage} alt="Colleagues travelling together" className="size-full object-cover" loading="eager" />
+          <img {...photography['solutions-hero-shared-view']} sizes="(min-width: 1440px) 560px, (min-width: 1024px) 42vw, calc(100vw - 40px)" decoding="async" loading="eager" fetchPriority="high" alt="Six professionals collaborating around a shared travel-planning view" className="size-full object-cover object-[54%_center]" />
           <div className="absolute inset-0 bg-gradient-to-tr from-background-dark/45 via-transparent to-mi-orange/10" />
           <div className="absolute bottom-4 left-4 max-w-[calc(100%-2rem)] rounded-full border border-mi-cream/20 bg-background-dark/70 px-3 py-2 text-center font-mi-body text-[clamp(.56rem,1.5vw,.68rem)] font-bold tracking-[.1em] text-mi-cream/80 backdrop-blur-sm sm:bottom-5 sm:left-5 sm:px-4">TRAVEL, SEEN FROM EVERY ANGLE</div>
         </Reveal>
