@@ -25,7 +25,7 @@ export default function RootLayout() {
   }, [pathname, hash]);
 
   return (
-    <div className="flex min-h-svh flex-col">
+    <div className="relative isolate flex min-h-svh flex-col">
       <NavBar />
       <Outlet />
       <Footer />
