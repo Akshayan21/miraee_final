@@ -44,6 +44,7 @@ export function NavBar() {
   return (
     <>
       <header
+        data-site-header
         className={cn(
           'fixed inset-x-0 top-0 z-[100] border-b py-3.5 transition-[background-color,backdrop-filter,padding,border-color] duration-500 [will-change:background-color,backdrop-filter,padding] sm:py-[18px]',
           (scrolled || pathname === '/terms-and-conditions' || pathname === '/privacy-policy')
