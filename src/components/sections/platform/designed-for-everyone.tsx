@@ -38,7 +38,7 @@ export function DesignedForEveryone() {
           </Reveal>
           <Reveal delay={140} className="justify-self-end w-full max-w-[430px]">
             <figure className="relative m-0 aspect-[16/8] overflow-hidden rounded-[24px] border border-background-dark/12 bg-background-dark/5">
-              <img {...photography['business-case-people']} sizes="(min-width: 1440px) 700px, (min-width: 1024px) 50vw, (min-width: 768px) 700px, calc(100vw - 40px)" decoding="async" alt="A diverse group of business travellers" className="size-full object-cover object-[72%_center]" loading="lazy" />
+              <img {...photography['airport-group-travelers']} sizes="(min-width: 1440px) 430px, (min-width: 1024px) 32vw, (min-width: 768px) 430px, calc(100vw - 40px)" decoding="async" alt="A group of happy business travelers walking through an airport with carry-on luggage" className="size-full object-cover object-[70%_center]" loading="lazy" />
             </figure>
           </Reveal>
         </div>

@@ -1,15 +1,49 @@
+import {
+  Award,
+  Users,
+  Search,
+  Building2,
+  Plane,
+  BedDouble,
+  Compass,
+  Globe,
+} from 'lucide-react';
 import { Reveal } from '@/components/motion/reveal';
 import { CountUp } from '@/components/motion/count-up';
 
 const STATS = [
-  { value: '15', label: 'YEARS, FOUNDED 2011', color: '#F25C05', count: false },
-  { value: '125M+', label: 'GLOBAL USERS', color: 'var(--color-mi-amber-text)', count: false },
-  { value: '50M', label: 'DAILY SEARCHES', color: '#DE5533', count: false },
-  { value: 65000, label: 'BUSINESSES', color: 'var(--color-mi-blue-text)', count: true },
-  { value: '500+', label: 'AIRLINES', color: '#F25C05', count: false },
-  { value: '2M+', label: 'HOTELS', color: 'var(--color-mi-amber-text)', count: false },
-  { value: '10M+', label: 'EXPERIENCES', color: 'var(--color-mi-green-text)', count: false },
-  { value: '12+', label: 'COUNTRIES', color: '#FF69AD', count: false },
+  { value: '15', label: 'YEARS, FOUNDED 2011', color: '#F25C05', count: false, Icon: Award },
+  {
+    value: '125M+',
+    label: 'GLOBAL USERS',
+    color: 'var(--color-mi-amber-text)',
+    count: false,
+    Icon: Users,
+  },
+  { value: '50M', label: 'DAILY SEARCHES', color: '#DE5533', count: false, Icon: Search },
+  {
+    value: 65000,
+    label: 'BUSINESSES',
+    color: 'var(--color-mi-blue-text)',
+    count: true,
+    Icon: Building2,
+  },
+  { value: '500+', label: 'AIRLINES', color: '#F25C05', count: false, Icon: Plane },
+  {
+    value: '2M+',
+    label: 'HOTELS',
+    color: 'var(--color-mi-amber-text)',
+    count: false,
+    Icon: BedDouble,
+  },
+  {
+    value: '10M+',
+    label: 'EXPERIENCES',
+    color: 'var(--color-mi-green-text)',
+    count: false,
+    Icon: Compass,
+  },
+  { value: '12+', label: 'COUNTRIES', color: '#FF69AD', count: false, Icon: Globe },
 ];
 
 export function Foundation() {
@@ -40,9 +74,18 @@ export function Foundation() {
           </Reveal>
         </div>
 
-        <div className="mt-[clamp(40px,6vw,72px)] grid grid-cols-[repeat(auto-fit,minmax(min(160px,45%),1fr))] gap-px overflow-hidden rounded-[32px] border border-mi-cream/12 bg-mi-cream/12">
-          {STATS.map((stat, i) => (
-            <Reveal key={stat.label} delay={i * 60} className="bg-background-dark px-5.5 py-7">
+        <div className="mt-[clamp(40px,6vw,72px)] grid grid-cols-2 gap-px overflow-hidden rounded-[32px] border border-mi-cream/12 bg-mi-cream/12 sm:grid-cols-4">
+          {STATS.map(({ Icon, ...stat }, i) => (
+            <Reveal
+              key={stat.label}
+              delay={i * 60}
+              className="group relative bg-background-dark px-5.5 py-7 transition-colors duration-300 hover:bg-mi-cream/[0.04]"
+            >
+              <Icon
+                className="mb-3.5 size-5 opacity-60 transition-opacity duration-300 group-hover:opacity-100"
+                style={{ color: stat.color }}
+                strokeWidth={1.75}
+              />
               <b
                 className="block font-mi-display text-[clamp(1.9rem,3.4vw,2.8rem)] leading-none font-bold tracking-[-0.02em]"
                 style={{ color: stat.color }}

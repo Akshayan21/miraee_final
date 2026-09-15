@@ -25,7 +25,7 @@ const ROLES = [
     color: '#F25C05',
     bg: 'rgba(242,92,5,.16)',
     border: 'rgba(242,92,5,.45)',
-    audience: 'Procurement',
+    audience: 'Travel Admins',
     title: 'Stacked savings',
     body: 'Stop paying retail-plus fares. We stack four contract sources on every search: Tabhi wholesale rates, your own negotiated rates, our direct supplier deals and third-party content. The best bookable fare always wins.',
     path: 'M4 20V10M10 20V6M16 20v-7M22 20V4',

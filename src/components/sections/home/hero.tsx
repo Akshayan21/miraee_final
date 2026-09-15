@@ -66,7 +66,7 @@ export function Hero() {
               </a>
             </Magnetic>
           </Reveal>
-          <Reveal delay={320} className="mt-10 font-mi-script text-[1.15rem] leading-[2] text-mi-orange">
+          <Reveal delay={320} className="mt-10 font-mi-script text-[clamp(2rem,3vw,3rem)] leading-[1.35] text-mi-orange">
             Travel Limitless
           </Reveal>
         </div>
@@ -89,7 +89,7 @@ export function Hero() {
                 alt="Miraee admin dashboard showing company travel spend, and the Miraee avatar helping an employee choose a flight to Delhi"
                 width={1200}
                 height={800}
-                className="mx-auto w-full max-w-[720px] rotate-[-1.5deg] drop-shadow-[0_40px_60px_rgba(0,0,0,.4)]"
+                className="mx-auto w-full max-w-[920px] rotate-[-1.5deg] drop-shadow-[0_40px_60px_rgba(0,0,0,.4)] lg:w-[128%] lg:max-w-none"
               />
             </div>
           </div>
