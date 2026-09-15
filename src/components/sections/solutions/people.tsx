@@ -18,7 +18,7 @@ export function People() {
         <div className="grid grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] items-start gap-[clamp(28px,4vw,64px)]">
           <div>
             <Reveal className="font-mi-body text-[.7rem] font-bold tracking-[0.14em] text-[#FF69AD]">
-              FOR PEOPLE TEAMS
+              FOR HR TEAMS
             </Reveal>
             <Reveal delay={80}>
               <h2 className="mt-4.5 max-w-[20ch] font-mi-accent text-[clamp(1.8rem,3.4vw,3rem)] leading-[1.06] font-bold tracking-[-0.035em]">

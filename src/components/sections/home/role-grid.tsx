@@ -35,7 +35,7 @@ const ROLES = [
     color: 'var(--color-mi-blue-text)',
     bg: 'rgba(128,155,255,.16)',
     border: 'rgba(128,155,255,.42)',
-    audience: 'People teams',
+    audience: 'HR Teams',
     title: 'Proactive duty of care',
     body: 'Every traveler is located accurately by their itinerary. Travel alerts, weather updates and disruption monitoring per PNR, notifying managers only when it truly matters.',
     path: 'M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z',

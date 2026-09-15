@@ -139,7 +139,7 @@ function LiveTracker() {
           ))}
         </div>
       </div>
-      <div className="grid grid-cols-3 border-t border-mi-cream/10">
+      <div className="grid grid-cols-1 border-t border-mi-cream/10 sm:grid-cols-3">
         <div className="border-r border-mi-cream/10 px-5 py-4">
           <b className="block font-mi-display text-[1.3rem] font-bold text-mi-orange">
             <CountUp value={34} />

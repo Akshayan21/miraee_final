@@ -7,7 +7,7 @@ const PILLS = [
   { label: 'Finance', href: '#finance' },
   { label: 'Travel Leads', href: '#travel-leads' },
   { label: 'Admins', href: '#admins' },
-  { label: 'People Teams', href: '#people' },
+  { label: 'HR Teams', href: '#people' },
 ];
 
 export function SolutionsHero() {
@@ -25,7 +25,7 @@ export function SolutionsHero() {
         </Reveal>
         <Reveal delay={160}>
           <p className="mt-8 max-w-[54ch] text-pretty font-mi-body text-[clamp(1.05rem,1.3vw,1.24rem)] leading-[1.55] text-mi-cream/74">
-            What changes for employees, managers, finance, travel leads, admins and people teams —
+            What changes for employees, managers, finance, travel leads, admins and HR teams —
             and every kind of company travel.
           </p>
         </Reveal>
@@ -47,10 +47,10 @@ export function SolutionsHero() {
           </a>
         </Reveal>
         </div>
-        <Reveal delay={180} className="relative hidden aspect-[4/3] overflow-hidden rounded-[32px] border border-mi-cream/14 lg:block">
-          <img src={peopleImage} alt="Colleagues travelling together" className="size-full object-cover" />
+        <Reveal delay={180} className="relative aspect-[4/3] w-full overflow-hidden rounded-[clamp(22px,3vw,32px)] border border-mi-cream/14">
+          <img src={peopleImage} alt="Colleagues travelling together" className="size-full object-cover" loading="eager" />
           <div className="absolute inset-0 bg-gradient-to-tr from-background-dark/45 via-transparent to-mi-orange/10" />
-          <div className="absolute bottom-5 left-5 rounded-full border border-mi-cream/20 bg-background-dark/70 px-4 py-2 font-mi-body text-[.68rem] font-bold tracking-[.1em] text-mi-cream/80 backdrop-blur-sm">TRAVEL, SEEN FROM EVERY ANGLE</div>
+          <div className="absolute bottom-4 left-4 max-w-[calc(100%-2rem)] rounded-full border border-mi-cream/20 bg-background-dark/70 px-3 py-2 text-center font-mi-body text-[clamp(.56rem,1.5vw,.68rem)] font-bold tracking-[.1em] text-mi-cream/80 backdrop-blur-sm sm:bottom-5 sm:left-5 sm:px-4">TRAVEL, SEEN FROM EVERY ANGLE</div>
         </Reveal>
       </div>
     </section>

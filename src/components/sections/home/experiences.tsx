@@ -182,7 +182,7 @@ export function Experiences() {
               Hyperlocal experiences come from Abhee, the group's experiential marketplace.
             </p>
           </Reveal>
-          <div className="grid grid-cols-3 self-stretch border-t border-mi-cream/14">
+          <div className="grid grid-cols-1 self-stretch border-t border-mi-cream/14 sm:grid-cols-3">
             <div className="border-r border-mi-cream/14 py-6 pr-4">
               <b className="block font-mi-display text-[clamp(1.8rem,3.4vw,3rem)] leading-none font-bold tracking-[-0.02em] text-mi-orange">
                 <CountUp value={10} suffix="M+" />

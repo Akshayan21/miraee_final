@@ -1,8 +1,8 @@
-main:has(form) { --legal-surface:#fff; --legal-ink:#0f0407; --legal-muted:#786c69; --legal-line:rgba(69,14,20,.14); }
-:root:not(.light) main:has(form) { --legal-surface:#1c1813; --legal-ink:#f3f1ed; --legal-muted:#bcb6af; --legal-line:rgba(243,241,237,.18); }
-main:has(form) form { background:var(--legal-surface); border-color:var(--legal-line); }
-main:has(form) form input,main:has(form) form textarea { background:var(--legal-surface); color:var(--legal-ink); border-color:var(--legal-line); }
-main:has(form) form label,main:has(form) form p,main:has(form) form li { color:var(--legal-muted); }
-main:has(form) form h2,main:has(form) form strong { color:var(--legal-ink); }
-main:has(form) form label:has(input[type=radio]),main:has(form) form label:has(input[type=checkbox]) { background:var(--legal-surface); color:var(--legal-ink); border-color:var(--legal-line); }
-main:has(form) form label:has(input[type=radio]):hover { border-color:var(--color-brand); }
+main:has(input[type=file], input[type=radio]) { --legal-surface:#fff; --legal-ink:#0f0407; --legal-muted:#786c69; --legal-line:rgba(69,14,20,.14); }
+:root:not(.light) main:has(input[type=file], input[type=radio]) { --legal-surface:#1c1813; --legal-ink:#f3f1ed; --legal-muted:#bcb6af; --legal-line:rgba(243,241,237,.18); }
+main:has(input[type=file], input[type=radio]) form { background:var(--legal-surface); border-color:var(--legal-line); }
+main:has(input[type=file], input[type=radio]) form input,main:has(input[type=file], input[type=radio]) form textarea { background:var(--legal-surface); color:var(--legal-ink); border-color:var(--legal-line); }
+main:has(input[type=file], input[type=radio]) form label,main:has(input[type=file], input[type=radio]) form p,main:has(input[type=file], input[type=radio]) form li { color:var(--legal-muted); }
+main:has(input[type=file], input[type=radio]) form h2,main:has(input[type=file], input[type=radio]) form strong { color:var(--legal-ink); }
+main:has(input[type=file], input[type=radio]) form label:has(input[type=radio]),main:has(input[type=file], input[type=radio]) form label:has(input[type=checkbox]) { background:var(--legal-surface); color:var(--legal-ink); border-color:var(--legal-line); }
+main:has(input[type=file], input[type=radio]) form label:has(input[type=radio]):hover { border-color:var(--color-brand); }

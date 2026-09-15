@@ -174,7 +174,7 @@ export function HowItWorks() {
             </p>
           </div>
 
-          <div className="mt-[clamp(32px,4vw,56px)] grid grid-cols-4 gap-3">
+          <div className="mt-[clamp(32px,4vw,56px)] grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-4 sm:gap-y-3">
             {TABS.map((tab, i) => {
               const segmentFill = Math.min(Math.max(progress * 4 - i, 0), 1) * 100;
               const isActive = active === i;
