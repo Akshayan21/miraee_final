@@ -1,0 +1,89 @@
+@custom-variant dark (&:is(.dark *));
+
+/* Keep keyboard focus consistent across links and CTAs, including utility-styled buttons. */
+:is(a[href], button, [role='button'], input[type='submit'], input[type='button']):focus-visible {
+  outline: 2px solid var(--color-mi-orange);
+  outline-offset: 4px;
+}
+
+/* Legal form surfaces and copy follow the active theme: deep + light copy in dark mode,
+   warm light surface + dark copy when the document has the .light theme class. */
+.legal-intake-form :is(.text-background-dark, .text-background-dark\/60, .text-background-dark\/68, .text-background-dark\/70, .text-background-dark\/72, .text-background-dark\/55, .text-background-dark\/56, .text-background-dark\/38) {
+  color: var(--color-mi-cream) !important;
+}
+.legal-intake-form :is(input, textarea) {
+  background-color: color-mix(in srgb, var(--color-background-dark) 70%, transparent);
+  color: var(--color-mi-cream);
+}
+.legal-intake-form .bg-white {
+  background-color: color-mix(in srgb, var(--color-background-dark) 70%, transparent);
+}
+.legal-intake-form :is(input, textarea)::placeholder {
+  color: color-mix(in srgb, var(--color-mi-cream) 45%, transparent);
+}
+.light .legal-intake-form :is(input, textarea) {
+  background-color: color-mix(in srgb, var(--color-background-dark) 12%, transparent);
+}
+.legal-page {
+  color: var(--color-mi-cream);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  body {
+    @apply bg-background font-body text-text antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading text-text;
+  }
+
+  /* Zero-specificity so any component-level text-* utility on the heading itself always wins. */
+  .mi-page :where(h1, h2, h3, h4, h5, h6) {
+    color: var(--color-mi-cream);
+  }
+
+  @keyframes ticket-fly {
+    0%,
+    100% {
+      transform: translateX(-7px) rotate(90deg);
+    }
+    50% {
+      transform: translateX(7px) rotate(90deg);
+    }
+  }
+
+  @keyframes ticket-float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}

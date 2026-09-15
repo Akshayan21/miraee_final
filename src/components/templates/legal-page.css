@@ -1,0 +1,22 @@
+/* Scoped semantic tokens keep legal documents in sync with the site theme. */
+.legal-page {
+  color-scheme: dark;
+  --color-background: var(--color-background-dark);
+  --color-surface: #1c1813;
+  --color-text: #f3f1ed;
+  --color-text-muted: #bcb6af;
+  --color-border: rgba(243, 241, 237, 0.18);
+  --color-brand: #ff9b60;
+  --color-brand-strong: #ff9b60;
+}
+
+.light .legal-page {
+  color-scheme: light;
+  --color-background: #ffffff;
+  --color-surface: #ffffff;
+  --color-text: #0f0407;
+  --color-text-muted: #786c69;
+  --color-border: rgba(69, 14, 20, 0.14);
+  --color-brand: #c74400;
+  --color-brand-strong: #c74400;
+}
