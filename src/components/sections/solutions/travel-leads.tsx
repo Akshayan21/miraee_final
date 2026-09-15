@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Reveal } from '@/components/motion/reveal';
 import { CountUp } from '@/components/motion/count-up';
 import { CONSOLE_PIN_STYLE } from '@/lib/dark-page';
-import peopleImage from '@/assets/images/platform-local-experiences-480.webp';
+import peopleImage from '@/assets/images/solutions-hero-airport-team-480.webp';
 
 const PAINS = [
   {

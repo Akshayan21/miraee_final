@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import travelerImage from '@/assets/images/platform-human-care-480.webp';
+import travelerImage from '@/assets/images/solutions-hero-departure-team-800.webp';
 
 gsap.registerPlugin(ScrollTrigger);
 

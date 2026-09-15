@@ -1,5 +1,5 @@
 import { Reveal } from '@/components/motion/reveal';
-import peopleImage from '@/assets/images/solutions-hero-shared-view-1200.webp';
+import governanceReviewImage from '@/assets/images/safety-governance-review.png';
 
 const CARDS = [
   {
@@ -43,9 +43,21 @@ export function SafetyGovernance() {
         </Reveal>
 
         <Reveal delay={200} className="mt-8 overflow-hidden rounded-[clamp(22px,3vw,28px)] border border-background-dark/14">
-          <div className="grid items-center bg-background-dark/4 md:grid-cols-[2fr_3fr]">
-            <p className="p-6 font-mi-accent text-[clamp(1.1rem,2.5vw,1.8rem)] leading-[1.25] font-semibold text-background-dark sm:p-8">The final call stays with the people who own the outcome.</p>
-            <img src={peopleImage} alt="Colleagues reviewing travel plans together around a table with a laptop and tablet" className="aspect-[16/10] w-full object-cover object-top" width={1200} height={900} loading="lazy" decoding="async" />
+          <div className="grid items-stretch bg-background-dark/4 md:grid-cols-[.85fr_1.15fr]">
+            <div className="flex flex-col justify-center border-b border-background-dark/10 p-6 sm:p-8 md:border-b-0 md:border-r">
+              <span className="font-mi-body text-[.68rem] font-bold tracking-[.14em] text-mi-scarlet">DECISION OWNERSHIP</span>
+              <p className="mt-5 font-mi-accent text-[clamp(1.1rem,2.5vw,1.8rem)] leading-[1.25] font-semibold text-background-dark">The final call stays with the people who own the outcome.</p>
+              <p className="mt-4 max-w-[30ch] font-mi-body text-[.9rem] leading-[1.55] text-background-dark/65">Automation handles the repeatable work. People step in when context, judgment, or accountability matters.</p>
+            </div>
+            <img
+              src={governanceReviewImage}
+              alt="Travel operations team reviewing an itinerary together"
+              className="aspect-[16/10] w-full object-cover object-center"
+              width={2048}
+              height={1280}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         </Reveal>
 
