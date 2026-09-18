@@ -1,105 +1,231 @@
+import { useState } from 'react';
+import { ArrowUpRight } from 'lucide-react';
 import { Reveal } from '@/components/motion/reveal';
+import { cn } from '@/lib/utils';
 
 const ROLES = [
   {
     color: '#FF69AD',
-    bg: 'rgba(255,105,173,.16)',
-    border: 'rgba(255,105,173,.4)',
     audience: 'Travelers',
     title: 'A personal executive assistant',
-    body: 'Give your team a voice, text and avatar-driven assistant that is calendar-aware and completely hands-free. It handles corporate trips, remembers preferences, and automatically rebooks during flight delays.',
-    path: 'M21 12a8 8 0 0 1-8 8H8l-5 3 1.5-4.5A8 8 0 1 1 21 12Z',
-    photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=facearea&facepad=2.5&w=160&h=160&q=80',
+    points: [
+      'Voice, text and avatar-driven assistant',
+      'Calendar-aware, completely hands-free',
+      'Auto-rebooks during flight delays',
+    ],
+    stat: ['24/7', 'Hands-free, always on'],
+    photo: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=facearea&facepad=2.5&w=600&h=800&q=80',
   },
   {
     color: 'var(--color-mi-green-text)',
-    bg: 'rgba(0,191,98,.14)',
-    border: 'rgba(0,191,98,.4)',
     audience: 'Finance',
     title: 'Zero-touch expenses',
-    body: 'Expense reports are filed by the time the plane lands. Receipts are automatically captured, GL-coded, policy-checked and reconciled without manual forms.',
-    path: 'M4 4h16v13a3 3 0 0 1-3 3H7a3 3 0 0 1-3-3Z M8 9h8M8 13h5',
-    photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=facearea&facepad=2.5&w=160&h=160&q=80',
+    points: [
+      'Receipts captured and GL-coded automatically',
+      'Policy-checked and reconciled without forms',
+      'Reports filed by the time you land',
+    ],
+    stat: ['0', 'Manual expense forms'],
+    photo: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=facearea&facepad=2.5&w=600&h=800&q=80',
   },
   {
     color: '#F25C05',
-    bg: 'rgba(242,92,5,.16)',
-    border: 'rgba(242,92,5,.45)',
     audience: 'Travel Admins',
     title: 'Stacked savings',
-    body: 'Stop paying retail-plus fares. We stack four contract sources on every search: Tabhi wholesale rates, your own negotiated rates, our direct supplier deals and third-party content. The best bookable fare always wins.',
-    path: 'M4 20V10M10 20V6M16 20v-7M22 20V4',
-    photo: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?auto=format&fit=facearea&facepad=2.5&w=160&h=160&q=80',
+    points: [
+      'Four contract sources stacked per search',
+      'Tabhi wholesale plus your negotiated rates',
+      'The best bookable fare always wins',
+    ],
+    stat: ['20–30%', 'Fare savings, validated'],
+    photo: 'https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?auto=format&fit=facearea&facepad=2.5&w=600&h=800&q=80',
   },
   {
     color: 'var(--color-mi-blue-text)',
-    bg: 'rgba(128,155,255,.16)',
-    border: 'rgba(128,155,255,.42)',
     audience: 'HR Teams',
     title: 'Proactive duty of care',
-    body: 'Every traveler is located accurately by their itinerary. Travel alerts, weather updates and disruption monitoring per PNR, notifying managers only when it truly matters.',
-    path: 'M12 21s7-5.6 7-11a7 7 0 1 0-14 0c0 5.4 7 11 7 11Z',
-    circle: true,
-    photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=facearea&facepad=2.5&w=160&h=160&q=80',
+    points: [
+      'Every traveler located by their itinerary',
+      'Weather and disruption monitoring per PNR',
+      'Managers notified only when it matters',
+    ],
+    stat: ['100%', 'Travelers located, always'],
+    photo: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=facearea&facepad=2.5&w=600&h=800&q=80',
   },
 ];
 
 export function RoleGrid() {
+  const [active, setActive] = useState<number | null>(null);
+
   return (
-    <section className="py-[clamp(72px,10vw,140px)]">
+    <section className="py-[clamp(48px,6vw,88px)]">
       <div className="mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
-        <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
-          WHAT CHANGES, BY ROLE
+        <div className="flex flex-wrap items-center justify-between gap-4">
+          <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
+            WHAT CHANGES, BY ROLE
+          </Reveal>
+          <Reveal delay={60} className="font-mi-body text-[.72rem] font-semibold text-mi-cream/35">
+            Select a role to explore
+          </Reveal>
+        </div>
+
+        {/* Desktop: expanding accordion rail */}
+        <Reveal
+          delay={80}
+          as="div"
+          className="mt-8 hidden gap-3 lg:flex"
+          style={{ height: 460 }}
+          onMouseLeave={() => setActive(null)}
+        >
+          {ROLES.map((role, i) => {
+            const isActive = active === i;
+            const isDimmed = active !== null && !isActive;
+            return (
+              <div
+                key={role.audience}
+                role="button"
+                tabIndex={0}
+                aria-expanded={isActive}
+                onMouseEnter={() => setActive(i)}
+                onFocus={() => setActive(i)}
+                onClick={() => setActive(i)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActive(i); }
+                }}
+                className="relative cursor-pointer overflow-hidden rounded-[24px] outline-none focus-visible:ring-2 focus-visible:ring-mi-orange focus-visible:ring-offset-4 transition-[flex-grow] duration-500 ease-(--motion-ease)"
+                style={{ flexGrow: isActive ? 3.4 : 1, flexBasis: 0, minWidth: 0 }}
+              >
+                <img
+                  src={role.photo}
+                  alt=""
+                  aria-hidden="true"
+                  loading="lazy"
+                  className={cn(
+                    'absolute inset-0 size-full object-cover transition-[filter,opacity] duration-500',
+                    isDimmed && 'opacity-70 grayscale',
+                  )}
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-0 bg-[linear-gradient(0deg,rgba(10,6,4,.92)_0%,rgba(10,6,4,.35)_46%,rgba(10,6,4,.05)_72%)]"
+                />
+                <div
+                  aria-hidden="true"
+                  className="absolute inset-x-0 top-0 h-1 transition-opacity duration-500"
+                  style={{ background: role.color, opacity: isActive ? 1 : 0.5 }}
+                />
+
+                <div className="absolute inset-0 flex flex-col justify-end p-6 [--color-mi-cream:#f3f1ed] [--color-mi-green-text:#71e6a7] [--color-mi-blue-text:#a6b8ff]">
+                  <span className="font-mi-body text-[.68rem] font-bold tracking-[0.12em] text-mi-cream/60">
+                    BUILT FOR
+                  </span>
+                  <h3
+                    className="mt-1 font-mi-accent text-[clamp(1.15rem,1.6vw,1.5rem)] leading-[1.05] font-bold tracking-[-0.03em] whitespace-nowrap"
+                    style={{ color: isActive ? role.color : '#f3f1ed' }}
+                  >
+                    {role.audience}
+                  </h3>
+
+                  <p className="mt-3 text-sm leading-relaxed text-[#f3f1ed]/85">{role.title}</p>
+                  <div
+                    className="grid transition-[grid-template-rows,opacity] duration-400 ease-(--motion-ease)"
+                    style={{ gridTemplateRows: isActive ? '1fr' : '0fr', opacity: isActive ? 1 : 0 }}
+                  >
+                    <div className="overflow-hidden">
+
+                      <ul className="mt-3 flex flex-col gap-2">
+                        {role.points.map((point) => (
+                          <li key={point} className="flex items-start gap-2 font-mi-body text-[.86rem] leading-[1.4] text-mi-cream/78">
+                            <span
+                              aria-hidden="true"
+                              className="mt-[7px] size-1.5 flex-none rounded-full"
+                              style={{ background: role.color }}
+                            />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-4 inline-flex items-baseline gap-2 rounded-full border border-mi-cream/20 bg-mi-cream/8 px-3.5 py-2">
+                        <span className="font-mi-accent text-[1.1rem] leading-none font-bold" style={{ color: role.color }}>
+                          {role.stat[0]}
+                        </span>
+                        <span className="font-mi-body text-[.72rem] font-semibold text-mi-cream/70">{role.stat[1]}</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <span
+                  aria-hidden="true"
+                  className="absolute top-5 right-5 grid size-8 place-items-center rounded-full border border-mi-cream/25 bg-white/10 text-white transition-transform duration-500"
+                  style={{ transform: isActive ? 'rotate(45deg)' : 'rotate(0deg)' }}
+                >
+                  <ArrowUpRight className="size-4" />
+                </span>
+              </div>
+            );
+          })}
         </Reveal>
-        <div className="mt-10 grid grid-cols-1 gap-5 md:grid-cols-2">
-          {ROLES.map((role, i) => (
-            <Reveal
-              key={role.audience}
-              delay={i * 80}
-              as="li"
-              className="relative flex min-h-[300px] list-none flex-col overflow-hidden rounded-[28px] border border-mi-cream/10 bg-mi-cream/3.5 p-7 md:p-8"
-              style={{ background: `linear-gradient(135deg, ${role.bg} 0%, rgba(255,255,255,.035) 38%, rgba(255,255,255,.02) 100%)` }}
-            >
-              <div aria-hidden="true" className="absolute top-0 right-0 h-px w-1/2" style={{ background: role.color }} />
-              <div className="flex items-center gap-4">
-                <span className="relative inline-block size-[72px] shrink-0">
+
+        {/* Mobile / touch: tap-to-expand accordion, stacked */}
+        <div className="mt-8 flex flex-col gap-3 lg:hidden">
+          {ROLES.map((role, i) => {
+            const isActive = active === i;
+            return (
+              <div key={role.audience} className="overflow-hidden rounded-[22px] border border-mi-cream/10">
+                <button
+                  type="button"
+                  aria-expanded={isActive}
+                  onClick={() => setActive(isActive ? null : i)}
+                  className="flex w-full items-center gap-4 p-4 text-left"
+                >
                   <img
                     src={role.photo}
                     alt=""
                     aria-hidden="true"
-                    className="size-[72px] rounded-full object-cover ring-2"
-                    style={{ ['--tw-ring-color' as string]: role.border }}
                     loading="lazy"
+                    className="size-14 flex-none rounded-full object-cover"
                   />
-                  <span
-                    className="absolute -right-1 -bottom-1 grid size-7 place-items-center rounded-full border"
-                    style={{ background: role.bg, borderColor: role.border }}
-                  >
-                    <svg viewBox="0 0 24 24" className="size-3.5" style={{ stroke: role.color }} fill="none" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-                      <path d={role.path} />
-                      {role.circle && <circle cx="12" cy="10" r="2.6" />}
-                    </svg>
-                  </span>
-                </span>
-                <div className="min-w-0">
-                  <span className="block font-mi-body text-[.68rem] font-bold tracking-[0.12em] text-mi-cream/48">
-                    BUILT FOR
-                  </span>
-                  <h3 className="mt-1 font-mi-accent text-[clamp(1.3rem,1.8vw,1.65rem)] leading-[1.05] font-bold tracking-[-0.035em]" style={{ color: role.color }}>
-                    {role.audience}
-                  </h3>
+                  <div className="min-w-0 flex-1">
+                    <span className="block font-mi-body text-[.65rem] font-bold tracking-[0.12em] text-mi-cream/48">
+                      BUILT FOR
+                    </span>
+                    <h3 className="font-mi-accent text-[1.1rem] font-bold" style={{ color: role.color }}>
+                      {role.audience}
+                    </h3>
+                  </div>
+                  <ArrowUpRight
+                    className="size-5 flex-none text-mi-cream/50 transition-transform duration-300"
+                    style={{ transform: isActive ? 'rotate(45deg)' : 'rotate(0deg)' }}
+                  />
+                </button>
+                <div
+                  className="grid transition-[grid-template-rows] duration-400 ease-(--motion-ease)"
+                  style={{ gridTemplateRows: isActive ? '1fr' : '0fr' }}
+                >
+                  <div className="overflow-hidden">
+                    <div className="px-4 pb-5">
+                      <p className="font-mi-body text-[.78rem] font-bold tracking-[.02em] text-mi-cream/85">{role.title}</p>
+                      <ul className="mt-3 flex flex-col gap-2">
+                        {role.points.map((point) => (
+                          <li key={point} className="flex items-start gap-2 font-mi-body text-[.9rem] leading-[1.5] text-mi-cream/74">
+                            <span aria-hidden="true" className="mt-[7px] size-1.5 flex-none rounded-full" style={{ background: role.color }} />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                      <div className="mt-4 inline-flex items-baseline gap-2 rounded-full border border-mi-cream/16 bg-mi-cream/4 px-3.5 py-2">
+                        <span className="font-mi-accent text-[1.1rem] leading-none font-bold" style={{ color: role.color }}>
+                          {role.stat[0]}
+                        </span>
+                        <span className="font-mi-body text-[.72rem] font-semibold text-mi-cream/70">{role.stat[1]}</span>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-              <div className="mt-auto border-t border-mi-cream/12 pt-6">
-                <h4 className="font-mi-body text-[.72rem] font-bold tracking-[0.1em] text-mi-cream/72">
-                  {role.title}
-                </h4>
-                <p className="mt-3 max-w-[55ch] text-pretty font-mi-body text-[.98rem] leading-[1.6] text-mi-cream/74">
-                {role.body}
-                </p>
-              </div>
-            </Reveal>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

@@ -4,6 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Reveal } from '@/components/motion/reveal';
 import { Magnetic } from '@/components/motion/magnetic';
+import { HeroVortexBackground } from '@/components/ui/hero-vortex-background';
 import heroImage from '@/assets/hero-section-image.webp';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -30,22 +31,22 @@ export function Hero() {
   }, []);
 
   return (
-    <section className="relative overflow-hidden bg-[radial-gradient(120%_90%_at_85%_0%,var(--color-glow-85),rgba(17,14,9,0)_62%),radial-gradient(70%_60%_at_8%_100%,rgba(242,92,5,.16),rgba(17,14,9,0)_70%)] pt-[clamp(120px,16vh,180px)] pb-[clamp(56px,8vw,96px)]">
+    <section className="relative overflow-hidden pt-[clamp(120px,16vh,180px)] pb-[clamp(56px,8vw,96px)]">
+      <div className="pointer-events-none absolute inset-0 opacity-30"><HeroVortexBackground /></div>
       <div className="mx-auto grid w-[min(1360px,100%-2*clamp(20px,4vw,64px))] items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-6">
         <div className="min-w-0 max-w-[52rem]">
           <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
             A PRIVATE TRAVEL ASSISTANT FOR EVERY EMPLOYEE
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-6 text-balance font-mi-display text-[clamp(2rem,4vw,3.6rem)] leading-[1.05] font-black tracking-[-0.02em] text-mi-cream uppercase">
-              The Travel &amp; Expense Platform That Actually Does the Work.
+            <h1 className="mt-6 text-balance font-mi-accent text-[clamp(2.5rem,4.5vw,4rem)] leading-[1.08] font-semibold tracking-[-0.045em] text-mi-cream">
+              Your travel plans.<br />Already handled.
             </h1>
           </Reveal>
           <Reveal delay={160}>
             <p className="mt-8 max-w-[46ch] text-pretty font-mi-body text-[clamp(1.05rem,1.35vw,1.26rem)] leading-[1.55] text-mi-cream/74">
-              Meet Miraee. State your intent, and our AI agents search, book, pay, coordinate,
-              recover, and file your expenses. Effortless for travelers, strictly controlled for
-              finance, and rewarding for everyone.
+              Meet Miraee, your personal travel agent. From the first booking to the last receipt,
+              every detail is handled—with your company’s policy built in.
             </p>
           </Reveal>
           <Reveal delay={240} className="mt-8 flex flex-wrap gap-3">
@@ -89,7 +90,7 @@ export function Hero() {
                 alt="Miraee admin dashboard showing company travel spend, and the Miraee avatar helping an employee choose a flight to Delhi"
                 width={1200}
                 height={800}
-                className="mx-auto w-full max-w-[920px] rotate-[-1.5deg] drop-shadow-[0_40px_60px_rgba(0,0,0,.4)] lg:w-[128%] lg:max-w-none"
+                className="mx-auto w-full max-w-[920px] rotate-[-1.5deg] drop-shadow-[0_24px_40px_rgba(69,14,20,.16)] lg:w-full lg:max-w-none"
               />
             </div>
           </div>
