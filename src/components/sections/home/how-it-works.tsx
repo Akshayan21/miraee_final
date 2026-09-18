@@ -1,274 +1,150 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
+import { ArrowRight, Check, CheckCheck, Hotel, MessageCircle, Plane, ReceiptText, RefreshCw, ShieldCheck, Sparkles } from 'lucide-react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import { CONSOLE_PIN_STYLE } from '@/lib/dark-page';
+import './how-it-works.css';
 
 gsap.registerPlugin(ScrollTrigger);
 
-const TABS = ['Plan', 'Book', 'Expense', 'Change'];
-
-const PANELS = [
-  {
-    eyebrow: '01 PLAN · JUST COMMAND',
-    title: 'Describe the trip in plain language.',
-    body: 'Miraee builds an in-policy itinerary in seconds.',
-  },
-  {
-    eyebrow: '02 BOOK · WHOLESALE INVENTORY',
-    title: 'Flights, hotels and cars from Mondee One wholesale inventory.',
-    body: 'Real savings, one tap.',
-  },
-  {
-    eyebrow: '03 EXPENSE · ZERO FORMS',
-    title: 'Receipts, reports and reconciliation handled automatically.',
-    body: 'No forms, no chasing.',
-  },
-  {
-    eyebrow: '04 CHANGE · SELF-REBOOKING',
-    title: 'Plans shift, the agent rebooks itself.',
-    body: 'Within policy, before you even ask.',
-  },
+const STEPS = [
+  { name: 'Plan', icon: MessageCircle, title: 'A few words. A complete itinerary.', description: 'Tell Miraee where you need to be. Your calendar, preferences and travel policy take care of the details.', short: 'Just say where. We’ll take it from here.', message: 'Tokyo Tuesday for the Aoyama review, back Thursday night.', reply: 'Your Tokyo trip is ready. Built around your meeting, and already within policy.', status: 'Itinerary ready' },
+  { name: 'Book', icon: Plane, title: 'The right trip. The better rate.', description: 'Flights, hotels and cars from Mondee One wholesale inventory. Your preferred options, together in one booking.', short: 'Your preferences. Our wholesale advantage.', message: 'Looks good. Book the flight and hotel.', reply: 'All booked. Your flight, stay and transfer are together in one itinerary.', status: 'Booking confirmed' },
+  { name: 'Expense', icon: ReceiptText, title: 'Enjoy the trip. Skip the paperwork.', description: 'Receipts, reports and reconciliation handled automatically. Everything matched, without the follow-up.', short: 'Every receipt, already taken care of.', message: 'Can you take care of my Tokyo expenses?', reply: 'Already handled. Your receipts are matched and your report is ready.', status: 'Report reconciled' },
+  { name: 'Change', icon: RefreshCw, title: 'Plans change. You stay a step ahead.', description: 'When a flight is disrupted, Miraee finds an alternative within policy and keeps the rest of your trip in sync.', short: 'A change of plans. Not a change of pace.', message: 'My flight is delayed. Will I still make it?', reply: 'I’ve rebooked your flight in the same cabin and moved your transfer. You’re all set.', status: 'Trip updated' },
 ];
 
-function PanelDetail({ index }: { index: number }) {
-  if (index === 0) {
-    return (
-      <div className="rounded-3xl border border-mi-cream/14 bg-[rgba(17,14,9,.92)] p-4.5" style={CONSOLE_PIN_STYLE}>
-        <div className="font-mi-body text-[.6rem] font-bold tracking-[0.12em] text-mi-cream/42">YOU SAID</div>
-        <p className="mt-2.5 font-mi-accent text-[1.05rem] leading-[1.4] font-medium tracking-[-0.02em] text-mi-cream">
-          "Tokyo Tuesday for the Aoyama review, back Thursday night."
-        </p>
-        <div className="mt-4.5 flex flex-wrap gap-2">
-          <span className="rounded-full border border-mi-orange/40 bg-mi-orange/16 px-3 py-1.5 font-mi-body text-[.72rem] font-semibold text-mi-amber-text">
-            Calendar checked
-          </span>
-          <span className="rounded-full border border-[var(--color-mi-blue-text)]/36 bg-[var(--color-mi-blue-text)]/14 px-3 py-1.5 font-mi-body text-[.72rem] font-semibold text-[var(--color-mi-blue-text)]">
-            Grade A policy
-          </span>
-          <span className="rounded-full border border-mi-green/36 bg-mi-green/14 px-3 py-1.5 font-mi-body text-[.72rem] font-semibold text-mi-green-text">
-            Visa valid 14 mo
-          </span>
-        </div>
-      </div>
-    );
-  }
-  if (index === 1) {
-    return (
-      <div className="grid gap-2.5 rounded-3xl border border-mi-cream/14 bg-[rgba(17,14,9,.92)] p-4.5" style={CONSOLE_PIN_STYLE}>
-        <div className="flex items-center justify-between gap-3 border-b border-mi-cream/10 pb-2.5">
-          <span className="font-mi-body text-[.84rem] font-semibold text-mi-cream">Published fare</span>
-          <span className="font-mi-accent text-[.95rem] font-bold text-mi-cream/50 line-through">$3,180</span>
-        </div>
-        <div className="flex items-center justify-between gap-3">
-          <span className="font-mi-body text-[.84rem] font-semibold text-mi-cream">Four contract layers stacked</span>
-          <span className="font-mi-accent text-[1.3rem] font-bold tracking-[-0.03em] text-mi-amber-text">$2,304</span>
-        </div>
-        <div className="mt-1.5 flex gap-1.5">
-          <i className="h-1.5 flex-1 rounded-sm bg-mi-orange" />
-          <i className="h-1.5 flex-1 rounded-sm bg-mi-amber" />
-          <i className="h-1.5 flex-1 rounded-sm bg-mi-rust" />
-          <i className="h-1.5 flex-1 rounded-sm bg-[var(--color-mi-blue-text)]" />
-        </div>
-        <div className="mt-1 font-mi-body text-[.64rem] leading-[1.4] font-bold tracking-[0.1em] text-mi-cream/45">
-          TABHI WHOLESALE · YOUR RATES · DIRECT DEALS · THIRD-PARTY
-        </div>
-      </div>
-    );
-  }
-  if (index === 2) {
-    return (
-      <div className="grid gap-2.5 rounded-3xl border border-mi-cream/14 bg-[rgba(17,14,9,.92)] p-4.5" style={CONSOLE_PIN_STYLE}>
-        <div className="flex justify-between gap-3 font-mi-body text-[.82rem] font-semibold text-mi-cream">
-          <span>Taxi · Narita → Shiodome</span>
-          <span className="font-bold text-mi-green-text">GL 6410</span>
-        </div>
-        <div className="flex justify-between gap-3 font-mi-body text-[.82rem] font-semibold text-mi-cream">
-          <span>Dinner · Aoyama</span>
-          <span className="font-bold text-mi-green-text">PER DIEM OK</span>
-        </div>
-        <div className="flex justify-between gap-3 font-mi-body text-[.82rem] font-semibold text-mi-cream">
-          <span>Hotel folio · 3 nights</span>
-          <span className="font-bold text-mi-green-text">MATCHED</span>
-        </div>
-        <div className="mt-2 flex items-baseline justify-between gap-3 border-t border-mi-cream/10 pt-3">
-          <span className="font-mi-body text-[.64rem] font-bold tracking-[0.12em] text-mi-cream/45">REPORT</span>
-          <span className="font-mi-accent text-[1.1rem] font-bold tracking-[-0.03em] text-mi-green-text">
-            Closed on landing
-          </span>
-        </div>
-      </div>
-    );
-  }
-  return (
-    <div className="grid gap-3 rounded-3xl border border-mi-cream/14 bg-[rgba(17,14,9,.92)] p-4.5" style={CONSOLE_PIN_STYLE}>
-      <div className="flex items-center gap-2.5 font-mi-body text-[.68rem] font-bold tracking-[0.12em] text-mi-rust">
-        <i className="size-2 rounded-full bg-mi-rust" />
-        NH 217 DELAYED · 2H 40M
-      </div>
-      <div className="grid gap-2 font-mi-body text-[.82rem] leading-[1.35] font-semibold text-mi-cream/80">
-        <span>Alternative priced against policy · in band</span>
-        <span>Rebooked NH 219 · 14:05 · same cabin</span>
-        <span>Hotel night held · transfer moved</span>
-      </div>
-      <div className="border-t border-mi-cream/10 pt-2.5 font-mi-accent text-[.8rem] font-bold tracking-[-0.02em] text-mi-cream">
-        Traveler notified before the gate announcement.
-      </div>
-    </div>
-  );
+function TripDetail({ active }: { active: number }) {
+  if (active === 0) return <>
+    <div className="journey-route"><div><small>Destination</small><strong>Tokyo<span>Japan</span></strong></div><Plane size={28} strokeWidth={1.3} /><div className="journey-route-end"><small>Your schedule</small><strong>Tue — Thu<span>Aoyama review</span></strong></div></div>
+    <div className="journey-checks">{['Calendar checked', 'Grade A policy', 'Visa valid 14 mo'].map(text => <span key={text}><Check size={13} />{text}</span>)}</div>
+  </>;
+  if (active === 1) return <>
+    <div className="journey-item"><span><Plane size={17} /> Return flight to Tokyo</span><Check size={16} /></div>
+    <div className="journey-item"><span><Hotel size={17} /> Hotel + airport transfer</span><Check size={16} /></div>
+    <div className="journey-price"><div><small>Published fare <s>$3,180</s></small><strong>$2,304 <span>wholesale rate</span></strong></div><b>Save $876</b></div>
+  </>;
+  if (active === 2) return <>
+    {[['Taxi · Narita to Shiodome', 'GL 6410'], ['Dinner · Aoyama', 'Per diem OK'], ['Hotel folio', 'Matched']].map(([label, status]) => <div className="journey-item" key={label}><span><ReceiptText size={16} />{label}</span><em>{status}</em></div>)}
+    <div className="journey-result"><CheckCheck size={18} /> Closed on landing</div>
+  </>;
+  return <>
+    <div className="journey-flight"><span className="journey-delayed">NH 217 <small>Delayed · 2h 40m</small></span><ArrowRight size={18} /><span>NH 219 <small>14:05 · Same cabin</small></span></div>
+    <div className="journey-checks"><span><Check size={13} />Within policy</span><span><Check size={13} />Transfer moved</span></div>
+    <div className="journey-result"><ShieldCheck size={18} /> Traveler notified. Everything in sync.</div>
+  </>;
 }
 
 export function HowItWorks() {
-  const sectionRef = useRef<HTMLDivElement>(null);
-  const pinRef = useRef<HTMLDivElement>(null);
   const [active, setActive] = useState(0);
-  const [progress, setProgress] = useState(0);
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  const sectionRef = useRef<HTMLElement>(null);
+  const scrollBodyRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<ScrollTrigger | null>(null);
 
   useEffect(() => {
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
     const section = sectionRef.current;
-    const pin = pinRef.current;
-    if (!section || !pin) return;
-
-    let trigger: ScrollTrigger | undefined;
-    const create = () => {
-      if (pin.offsetWidth < 200 || pin.offsetHeight < 200) return;
-      trigger = ScrollTrigger.create({
-        trigger: section,
-        start: 'top top',
-        end: '+=300%',
-        pin,
-        scrub: true,
-        anticipatePin: 1,
-        invalidateOnRefresh: true,
-        onUpdate: (self) => {
-          setActive(Math.min(3, Math.floor(self.progress * 4.0001)));
-          setProgress(self.progress);
-        },
-      });
-    };
-    const timer = setTimeout(create, 220);
-    return () => {
-      clearTimeout(timer);
-      trigger?.kill();
-    };
+    const body = scrollBodyRef.current;
+    if (!section || !body) return;
+    const media = gsap.matchMedia();
+    media.add('(max-width: 760px)', () => {
+      const cards = section.querySelectorAll<HTMLElement>('.journey-mobile-chapter');
+      const triggers = Array.from(cards, (card, index) => ScrollTrigger.create({
+        trigger: card, start: 'top 45%', end: 'bottom 45%',
+        onEnter: () => setActive(index), onEnterBack: () => setActive(index),
+      }));
+      return () => triggers.forEach(trigger => trigger.kill());
+    });
+    media.add('(min-width: 761px) and (prefers-reduced-motion: no-preference)', () => {
+      let frame = 0;
+      let disposed = false;
+      let lastWidth = 0;
+      let lastHeight = 0;
+      const create = () => {
+        if (disposed) return;
+        triggerRef.current?.kill();
+        // Only pin when all of the interactive content fits below the navigation.
+        const canPin = body.offsetHeight <= window.innerHeight - 104;
+        const trigger = ScrollTrigger.create({
+          trigger: canPin ? body : section,
+          start: canPin ? 'top 88px' : 'top 25%',
+          end: canPin ? () => `+=${window.innerHeight * 2.4}` : 'bottom 80%',
+          pin: canPin ? body : false,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          onUpdate: self => setActive(Math.min(3, Math.floor(self.progress * 4))),
+        });
+        triggerRef.current = trigger;
+        setActive(Math.min(3, Math.floor(trigger.progress * 4)));
+        lastWidth = window.innerWidth;
+        lastHeight = window.innerHeight;
+      };
+      const resize = () => {
+        if (lastWidth === window.innerWidth && Math.abs(lastHeight - window.innerHeight) < 100) return;
+        cancelAnimationFrame(frame);
+        frame = requestAnimationFrame(create);
+      };
+      frame = requestAnimationFrame(create);
+      // Font loading can change whether the content fits in the viewport.
+      void document.fonts.ready.then(() => { if (!disposed) { cancelAnimationFrame(frame); frame = requestAnimationFrame(create); } });
+      window.addEventListener('resize', resize);
+      return () => {
+        disposed = true;
+        cancelAnimationFrame(frame);
+        window.removeEventListener('resize', resize);
+        triggerRef.current?.kill();
+        triggerRef.current = null;
+      };
+    });
+    return () => media.revert();
   }, []);
 
-  return (
-    <section id="how" ref={sectionRef}>
-      <div
-        ref={pinRef}
-        className="flex min-h-svh flex-col justify-center py-[clamp(88px,12vh,132px)] pb-[clamp(48px,7vh,80px)]"
-      >
-        <div className="mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
-          <div className="flex flex-wrap items-end justify-between gap-6">
-            <div>
-              <div className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
-                HOW IT WORKS
-              </div>
-              <h2 className="mt-4.5 max-w-[26ch] text-balance font-mi-accent text-[clamp(1.7rem,3.2vw,2.9rem)] leading-[1.08] font-bold tracking-[-0.035em]">
-                One agent, the whole journey: plan, book, expense, change.
-              </h2>
-            </div>
-            <p className="max-w-[22ch] font-mi-script text-base leading-[2] text-mi-amber-text">
-              Voice, chat or avatar. It remembers your preferences.
-            </p>
-          </div>
-
-          <div className="mt-[clamp(32px,4vw,56px)] grid grid-cols-2 gap-x-3 gap-y-5 sm:grid-cols-4 sm:gap-y-3">
-            {TABS.map((tab, i) => {
-              const segmentFill = Math.min(Math.max(progress * 4 - i, 0), 1) * 100;
-              const isActive = active === i;
-              const isDone = progress * 4 > i + 1;
-              return (
-                <button
-                  key={tab}
-                  type="button"
-                  onClick={() => setActive(i)}
-                  className="group cursor-pointer pt-3.5 text-left"
-                >
-                  <i className="relative block h-0.5 w-full overflow-hidden rounded-full bg-mi-cream/14">
-                    <i
-                      className="absolute inset-y-0 left-0 block rounded-full bg-gradient-to-r from-mi-orange to-mi-amber transition-[width] duration-150 ease-out"
-                      style={{ width: `${segmentFill}%` }}
-                    />
-                  </i>
-                  <div className="mt-3 flex items-center gap-2.5">
-                    <span
-                      className="flex size-6 shrink-0 items-center justify-center rounded-full font-mi-body text-[.62rem] font-bold tracking-[0.08em] transition-[background-color,color,box-shadow,transform] duration-400"
-                      style={{
-                        backgroundColor: isActive || isDone ? '#F25C05' : 'rgba(243,241,237,.1)',
-                        color: isActive || isDone ? '#110E09' : 'rgba(243,241,237,.5)',
-                        boxShadow: isActive ? '0 0 0 4px rgba(242,92,5,.18)' : 'none',
-                        transform: isActive ? 'scale(1.08)' : 'scale(1)',
-                      }}
-                    >
-                      {i + 1}
-                    </span>
-                    <b
-                      className="block font-mi-accent text-[clamp(.95rem,1.7vw,1.5rem)] leading-[1.05] font-bold tracking-[-0.03em] transition-opacity duration-400"
-                      style={{ opacity: isActive ? 1 : 0.42 }}
-                    >
-                      {tab}
-                    </b>
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-
-          <div className="relative mt-[clamp(24px,3vw,40px)] min-h-[clamp(320px,38vh,380px)] rounded-[32px] border border-mi-cream/12 bg-[linear-gradient(140deg,var(--color-glow-85),rgba(17,14,9,0)_70%)] p-[clamp(24px,3vw,40px)]">
-            {PANELS.map((panel, i) => {
-              const isActive = active === i;
-              const childStyle = (order: number) => ({
-                transitionDelay: isActive ? `${order * 90}ms` : '0ms',
-                opacity: isActive ? 1 : 0,
-                transform: isActive ? 'none' : 'translateY(16px)',
-              });
-              return (
-                <div
-                  key={panel.eyebrow}
-                  className="grid grid-cols-[repeat(auto-fit,minmax(min(300px,100%),1fr))] items-center gap-8 transition-[opacity,transform] duration-500"
-                  style={
-                    i === 0
-                      ? { opacity: isActive ? 1 : 0, transform: isActive ? 'none' : 'translateY(18px)' }
-                      : {
-                          position: 'absolute',
-                          inset: 'clamp(24px,3vw,40px)',
-                          opacity: isActive ? 1 : 0,
-                          transform: isActive ? 'none' : 'translateY(18px)',
-                          pointerEvents: isActive ? 'auto' : 'none',
-                        }
-                  }
-                >
-                  <div>
-                    <div
-                      className="font-mi-body text-[.66rem] font-bold tracking-[0.14em] text-mi-orange transition-[opacity,transform] duration-500"
-                      style={childStyle(0)}
-                    >
-                      {panel.eyebrow}
-                    </div>
-                    <h3
-                      className="mt-4 max-w-[20ch] font-mi-accent text-[clamp(1.5rem,2.6vw,2.3rem)] leading-[1.1] font-bold tracking-[-0.035em] transition-[opacity,transform] duration-500"
-                      style={childStyle(1)}
-                    >
-                      {panel.title}
-                    </h3>
-                    <p
-                      className="mt-4 max-w-[40ch] font-mi-body text-[1.02rem] leading-[1.6] text-mi-cream/74 transition-[opacity,transform] duration-500"
-                      style={childStyle(2)}
-                    >
-                      {panel.body}
-                    </p>
-                  </div>
-                  <div className="transition-[opacity,transform] duration-500" style={childStyle(3)}>
-                    <PanelDetail index={i} />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
+  function selectStage(index: number) {
+    if (window.matchMedia('(max-width: 760px)').matches) {
+      sectionRef.current?.querySelectorAll<HTMLElement>('.journey-mobile-chapter')[index]?.scrollIntoView({ block: 'start', behavior: 'instant' });
+      setActive(index);
+      return;
+    }
+    const trigger = triggerRef.current;
+    if (trigger) {
+      // Move to the middle of the selected stage so the next scroll continues there.
+      trigger.scroll(trigger.start + (trigger.end - trigger.start) * ((index + 0.5) / 4));
+      ScrollTrigger.update();
+    }
+    setActive(index);
+  }
+  function selectAndFocus(index: number) { selectStage(index); tabs.current[index]?.focus({ preventScroll: true }); }
+  return <section ref={sectionRef} id="how" className="journey-section" aria-labelledby="journey-heading" style={{ '--journey-step': active } as CSSProperties}>
+    <div className="journey-container">
+      <header className="journey-heading"><p className="journey-eyebrow">The Miraee way</p><h2 id="journey-heading">You’re going places.<br />We’re with you all the way.</h2><p>One conversation. Every detail taken care of.</p></header>
+      <div ref={scrollBodyRef} className="journey-scroll-body">
+      <div className="journey-tabs" role="tablist" aria-label="Explore your journey" aria-orientation="horizontal" onKeyDown={event => {
+        const offsets: Record<string, number> = { ArrowDown: 1, ArrowRight: 1, ArrowUp: -1, ArrowLeft: -1 };
+        if (event.key in offsets) { event.preventDefault(); selectAndFocus((active + offsets[event.key] + 4) % 4); }
+        if (event.key === 'Home' || event.key === 'End') { event.preventDefault(); selectAndFocus(event.key === 'Home' ? 0 : 3); }
+      }}>
+        <div className="journey-track" aria-hidden="true"><span /><i><Plane size={17} /></i></div>
+        {STEPS.map((step, index) => <button key={step.name} ref={node => { tabs.current[index] = node; }} type="button" role="tab" id={`journey-tab-${index}`} aria-controls={`journey-panel-${index}`} aria-selected={active === index} tabIndex={active === index ? 0 : -1} className={`journey-tab ${active === index ? 'is-active' : ''}`} onClick={() => selectStage(index)}><span className="journey-stop">{index < active ? <Check size={12} /> : <span />}</span><span className="journey-tab-name">{step.name}</span><span className="journey-tab-description">{['A little inspiration', 'Everything, arranged', 'Paperwork, gone', 'Always a step ahead'][index]}</span></button>)}
       </div>
-    </section>
-  );
+      <div className="journey-stage"><div className="journey-stories">
+        {STEPS.map((step, index) => <div key={step.name} id={`journey-panel-${index}`} role="tabpanel" aria-labelledby={`journey-tab-${index}`} tabIndex={active === index ? 0 : -1} aria-hidden={active !== index} inert={active !== index} className={`journey-story ${active === index ? 'is-active' : ''}`}><span className="journey-chapter">0{index + 1} / {step.name}</span><h3>{step.title}</h3><p>{step.description}</p><div className="journey-prompt"><MessageCircle size={18} /><blockquote>“{step.message}”</blockquote></div></div>)}
+        <button className="journey-next" type="button" onClick={() => selectStage((active + 1) % 4)}>{active === 3 ? 'Take the journey again' : `And then? ${STEPS[active + 1].name}`}<ArrowRight size={17} /></button>
+      </div><div className="journey-passport" aria-label="Illustrative Tokyo trip preview">
+        <div className="journey-ticket-top"><span><Sparkles size={16} /> Miraee</span><span>Your journey, together</span></div>
+        <div className="journey-destination"><div><span>Your next chapter</span><strong>Tokyo.</strong><p>Aoyama review · Tuesday — Thursday</p></div><div className="journey-stamp" aria-hidden="true"><Plane size={23} strokeWidth={1.2} /><span>TYO</span></div></div>
+        <div className="journey-ticket-seam" />
+        <div className="journey-detail-stack">{STEPS.map((step, index) => <div key={step.name} className={`journey-detail ${active === index ? 'is-active' : ''}`} aria-hidden={active !== index} inert={active !== index}><div className="journey-card-label"><span><span className="journey-status-dot" />{step.status}</span><span><ShieldCheck size={13} /> In policy</span></div><TripDetail active={index} /><div className="journey-agent-reply"><Sparkles size={15} /><p>{step.reply}</p></div></div>)}</div>
+        <div className="journey-ticket-bottom"><span>One agent. No loose ends.</span><span className="journey-barcode" aria-hidden="true" /></div>
+      </div></div>
+      </div>
+      <div className="journey-mobile-chapters">
+        {STEPS.map((step,index) => <article className="journey-mobile-chapter" key={step.name} aria-labelledby={`mobile-journey-${index}`}>
+          <span className="journey-chapter">0{index + 1} / {step.name}</span>
+          <h3 id={`mobile-journey-${index}`}>{step.title}</h3><p>{step.description}</p>
+          <blockquote>“{step.message}”</blockquote>
+          <div className="journey-passport"><div className="journey-ticket-top"><span><Sparkles size={16} /> Miraee</span><span>Tokyo · Tue — Thu</span></div><div className="journey-mobile-detail"><div className="journey-card-label"><span>{step.status}</span><span><ShieldCheck size={14} /> In policy</span></div><TripDetail active={index} /><div className="journey-agent-reply"><Sparkles size={16} /><p>{step.reply}</p></div></div></div>
+        </article>)}
+      </div>
+      <footer className="journey-footer"><Sparkles size={15} /><span>Voice, chat or avatar. It remembers your preferences.</span></footer>
+    </div>
+  </section>;
 }

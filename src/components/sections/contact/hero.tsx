@@ -1,10 +1,12 @@
 import { Reveal } from '@/components/motion/reveal';
+import { HeroVortexBackground } from '@/components/ui/hero-vortex-background';
 import { StepsExplainer } from './steps-explainer';
 import { DemoFormPanel } from './demo-form-panel';
 
 export function Hero() {
   return (
-    <section className="relative bg-[radial-gradient(110%_80%_at_85%_0%,var(--color-glow-85),rgba(17,14,9,0)_60%),radial-gradient(70%_60%_at_5%_100%,rgba(242,92,5,.16),rgba(17,14,9,0)_70%)] pt-[clamp(120px,16vh,180px)] pb-[clamp(64px,9vw,120px)]">
+    <section className="relative overflow-hidden pt-[clamp(120px,16vh,180px)] pb-[clamp(64px,9vw,120px)]">
+      <HeroVortexBackground />
       <div className="mx-auto grid w-[min(1360px,100%-2*clamp(20px,4vw,64px))] grid-cols-[repeat(auto-fit,minmax(min(380px,100%),1fr))] items-start gap-[clamp(32px,5vw,72px)]">
         <div className="min-w-0">
           <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">

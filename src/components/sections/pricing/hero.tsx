@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Reveal } from '@/components/motion/reveal';
 import { Magnetic } from '@/components/motion/magnetic';
 import { CONSOLE_PIN_STYLE } from '@/lib/dark-page';
+import { HeroVortexBackground } from '@/components/ui/hero-vortex-background';
 
 const ROWS: [string, number, number, string][] = [
   ['LHR → JFK · business · 42 trips', 186400, 148900, 'Tabhi wholesale'],
@@ -135,7 +136,8 @@ function AuditConsole() {
 
 export function Hero() {
   return (
-    <section className="bg-[radial-gradient(110%_80%_at_85%_0%,var(--color-glow-85),rgba(17,14,9,0)_60%)] pt-[clamp(120px,16vh,180px)] pb-[clamp(56px,8vw,96px)]">
+    <section className="relative overflow-hidden pt-[clamp(120px,16vh,180px)] pb-[clamp(56px,8vw,96px)]">
+      <HeroVortexBackground />
       <div className="mx-auto grid w-[min(1360px,100%-2*clamp(20px,4vw,64px))] grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] items-end gap-[clamp(32px,4vw,64px)]">
         <div className="min-w-0">
           <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">

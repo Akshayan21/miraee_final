@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import gsap from 'gsap';
 import { Reveal } from '@/components/motion/reveal';
+import { HeroVortexBackground } from '@/components/ui/hero-vortex-background';
 import { photography } from '@/content/photography';
 import avatarImage from '@/assets/images/Avatar.png';
 
@@ -20,7 +21,8 @@ export function Hero() {
   }
 
   return (
-    <section className="bg-[radial-gradient(110%_80%_at_80%_0%,var(--color-glow-85),rgba(17,14,9,0)_60%)] pt-[clamp(120px,16vh,180px)] pb-[clamp(56px,8vw,96px)]">
+    <section className="relative overflow-hidden pt-[clamp(120px,16vh,180px)] pb-[clamp(56px,8vw,96px)]">
+      <HeroVortexBackground />
       <div className="mx-auto grid w-[min(1360px,100%-2*clamp(20px,4vw,64px))] items-center gap-10 lg:grid-cols-[minmax(0,.92fr)_minmax(420px,1.08fr)] lg:gap-14">
         <div>
           <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">

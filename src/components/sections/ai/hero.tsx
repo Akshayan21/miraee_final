@@ -1,9 +1,11 @@
 import { Reveal } from '@/components/motion/reveal';
+import { HeroVortexBackground } from '@/components/ui/hero-vortex-background';
 import { photography } from '@/content/photography';
 
 export function Hero() {
   return (
-    <section className="bg-[radial-gradient(110%_80%_at_80%_0%,rgba(115,73,245,.18),rgba(17,14,9,0)_58%),radial-gradient(80%_70%_at_10%_100%,rgba(242,92,5,.16),rgba(17,14,9,0)_65%)] pt-[clamp(120px,16vh,180px)] pb-[clamp(56px,8vw,96px)]">
+    <section className="relative overflow-hidden pt-[clamp(120px,16vh,180px)] pb-[clamp(56px,8vw,96px)]">
+      <HeroVortexBackground />
       <div className="mx-auto grid w-[min(1360px,100%-2*clamp(20px,4vw,64px))] items-end gap-10 lg:grid-cols-[1.05fr_.95fr] lg:gap-16">
         <div>
         <Reveal visibleOnLoad className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">

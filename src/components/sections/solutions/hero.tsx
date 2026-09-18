@@ -1,4 +1,5 @@
 import { Reveal } from '@/components/motion/reveal';
+import { HeroVortexBackground } from '@/components/ui/hero-vortex-background';
 import { photography } from '@/content/photography';
 
 const PILLS = [
@@ -12,7 +13,8 @@ const PILLS = [
 
 export function SolutionsHero() {
   return (
-    <section className="bg-[radial-gradient(110%_80%_at_85%_0%,var(--color-glow-85),rgba(17,14,9,0)_60%)] pt-[clamp(120px,16vh,180px)] pb-[clamp(48px,7vw,80px)]">
+    <section className="relative overflow-hidden pt-[clamp(120px,16vh,180px)] pb-[clamp(48px,7vw,80px)]">
+      <HeroVortexBackground />
       <div className="mx-auto grid w-[min(1360px,100%-2*clamp(20px,4vw,64px))] items-end gap-10 lg:grid-cols-[1.1fr_.9fr] lg:gap-16">
         <div>
         <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
