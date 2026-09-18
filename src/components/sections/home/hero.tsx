@@ -39,14 +39,15 @@ export function Hero() {
             A PRIVATE TRAVEL ASSISTANT FOR EVERY EMPLOYEE
           </Reveal>
           <Reveal delay={80}>
-            <h1 className="mt-6 text-balance font-mi-accent text-[clamp(2.5rem,4.5vw,4rem)] leading-[1.08] font-semibold tracking-[-0.045em] text-mi-cream">
-              Your travel plans.<br />Already handled.
+            <h1 className="mt-6 text-balance font-mi-display text-[clamp(2rem,4vw,3.6rem)] leading-[1.05] font-black tracking-[-0.02em] text-mi-cream uppercase">
+              The Travel &amp; Expense Platform That Actually Does the Work.
             </h1>
           </Reveal>
           <Reveal delay={160}>
             <p className="mt-8 max-w-[46ch] text-pretty font-mi-body text-[clamp(1.05rem,1.35vw,1.26rem)] leading-[1.55] text-mi-cream/74">
-              Meet Miraee, your personal travel agent. From the first booking to the last receipt,
-              every detail is handled—with your company’s policy built in.
+              Meet Miraee. State your intent, and our AI agents search, book, pay, coordinate,
+              recover, and file your expenses. Effortless for travelers, strictly controlled for
+              finance, and rewarding for everyone.
             </p>
           </Reveal>
           <Reveal delay={240} className="mt-8 flex flex-wrap gap-3">
