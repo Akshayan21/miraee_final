@@ -14,7 +14,7 @@ export function Hero() {
         <div className="relative mx-auto mt-6 w-full max-w-[960px]">
           <div
             aria-hidden="true"
-            className="absolute top-[17.5%] left-[3.6%] h-[18.5%] w-[47%] rounded-2xl bg-[#f3f1ed] shadow-[0_10px_30px_rgba(0,0,0,.25)]"
+            className="absolute top-[17.5%] left-[1%] h-[18.5%] w-[50%] rounded-2xl bg-[#f3f1ed] shadow-[0_10px_30px_rgba(0,0,0,.25)]"
           />
           <img
             src={companyImage}
