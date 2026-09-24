@@ -1,23 +1,21 @@
 import { Reveal } from '@/components/motion/reveal';
-import { HeroVortexBackground } from '@/components/ui/hero-vortex-background';
 
 const PILLS = [
-  { label: '01 Identity, SSO and SCIM', active: false },
+  { label: '01 Identity, SSO and SCIM', active: true },
   { label: '02 Policy, configurable', active: false },
   { label: '03 Approval, human when needed', active: false },
-  { label: '04 Evidence, always logged', active: true },
+  { label: '04 Evidence, always logged', active: false },
 ];
 
 export function Hero() {
   return (
     <section className="relative overflow-hidden pt-[clamp(120px,16vh,180px)] pb-[clamp(48px,7vw,80px)]">
-      <HeroVortexBackground />
       <div className="mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
         <Reveal visibleOnLoad className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
           SECURITY / TRUST
         </Reveal>
         <Reveal visibleOnLoad delay={80}>
-          <h1 className="mt-6 max-w-[22ch] text-balance font-mi-display text-[clamp(2.2rem,5.6vw,5rem)] leading-[.96] font-black tracking-[-0.02em] uppercase">
+          <h1 className="mt-6 max-w-[22ch] text-balance font-heading text-hero font-semibold">
             Enterprise-Grade Security and Control.
           </h1>
         </Reveal>

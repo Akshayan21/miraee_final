@@ -123,7 +123,9 @@ export function LegalIntakeForm({ kind }: { kind: FormKind }) {
             'I do not currently request an individual settlement conference.',
             'I am willing to participate if Miraee requests one.',
           ]} />
-          <FieldInput field={{ name: 'availability', label: 'General availability for a settlement conference', placeholder: 'Days and times that work for you', wide: true }} value={values.availability ?? ''} onChange={setValue} />
+          <div className="mt-5 grid min-w-0 gap-5 sm:grid-cols-2">
+            <FieldInput field={{ name: 'availability', label: 'General availability for a settlement conference', placeholder: 'Days and times that work for you', wide: true }} value={values.availability ?? ''} onChange={setValue} />
+          </div>
 
           <SectionTitle>REPRESENTATION</SectionTitle>
           <RadioGroup name="representation" value={values.representation ?? ''} onChange={setValue} required options={[

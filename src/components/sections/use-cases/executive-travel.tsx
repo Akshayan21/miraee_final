@@ -26,7 +26,7 @@ export function ExecutiveTravel() {
               EXECUTIVE TRAVEL
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-4.5 max-w-[20ch] font-mi-accent text-[clamp(1.8rem,3.4vw,2.9rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+              <h2 className="mt-4.5 max-w-[20ch] font-heading text-section font-semibold text-balance">
                 White-glove travel, quietly handled.
               </h2>
             </Reveal>

@@ -69,7 +69,7 @@ export function Implementation() {
           GETTING STARTED · IMPLEMENTATION &amp; ONBOARDING
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-4.5 max-w-[24ch] font-mi-accent text-[clamp(2rem,4vw,3.4rem)] leading-[1.04] font-bold tracking-[-0.04em] text-background-dark">
+          <h2 className="mt-4.5 max-w-[24ch] font-heading text-background-dark text-section font-semibold text-balance">
             Live in an afternoon, not a quarter.
           </h2>
         </Reveal>

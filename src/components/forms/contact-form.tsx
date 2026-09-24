@@ -76,7 +76,7 @@ export function ContactForm() {
               />
             </label>
           </div>
-          <div className="mt-4 grid gap-4">
+          <div className="mt-4 grid grid-cols-[repeat(auto-fit,minmax(min(180px,100%),1fr))] gap-4">
             <label className={labelClass}>
               <span>WORK EMAIL</span>
               <input
@@ -100,7 +100,7 @@ export function ContactForm() {
               />
             </label>
           </div>
-          <div className="mt-4 grid gap-4">
+          <div className="mt-4 grid grid-cols-[repeat(auto-fit,minmax(min(180px,100%),1fr))] gap-4">
             <label className={labelClass}>
               <span>YOUR ROLE</span>
               <input type="text" placeholder="Travel or finance lead" required value={values.role} onChange={handleChange('role')} className={inputClass} />

@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import { Reveal } from '@/components/motion/reveal';
 import mondeeLogo from '@/assets/images/mondee_logo.png';
 import miraeeLogo from '@/assets/Miraee_Logo.png';
@@ -56,7 +55,7 @@ export function GroupCompanies() {
           BACKED BY TABHI
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-4.5 font-mi-accent text-[clamp(1.9rem,3.8vw,3.2rem)] leading-[1.04] font-bold tracking-[-0.04em] text-background-dark">
+          <h2 className="mt-4.5 font-heading text-background-dark text-section font-semibold text-balance">
             Twenty-three companies. One platform. Three products.
           </h2>
         </Reveal>
@@ -68,10 +67,9 @@ export function GroupCompanies() {
               delay={i * 80}
               className={
                 company.highlight
-                  ? 'rounded-[32px] border border-mi-orange/40 bg-[linear-gradient(140deg,rgba(242,92,5,.12),#fff_70%)] p-7'
-                  : 'rounded-[32px] border border-background-dark/14 bg-white p-7'
+                  ? 'on-light-surface rounded-[32px] border border-mi-orange/40 bg-[linear-gradient(140deg,rgba(242,92,5,.12),#fff_70%)] p-7'
+                  : 'on-light-surface rounded-[32px] border border-background-dark/14 bg-white p-7'
               }
-              style={{ '--color-background-dark': '#150b08' } as CSSProperties}
             >
               <img src={company.logo} alt={company.eyebrow.split(' · ')[0]} className="h-6 w-auto object-contain" />
               <div

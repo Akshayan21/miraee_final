@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import { Reveal } from '@/components/motion/reveal';
 import { photography } from '@/content/photography';
 
@@ -32,12 +31,12 @@ export function DesignedForEveryone() {
         </Reveal>
         <div className="mt-4.5 grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,.62fr)] lg:gap-12">
           <Reveal delay={80}>
-            <h2 className="font-mi-accent text-[clamp(2rem,4vw,3.4rem)] leading-[1.04] font-bold tracking-[-0.04em] text-background-dark">
+            <h2 className="font-heading text-background-dark text-section font-semibold text-balance">
               Less work. Better journeys.
             </h2>
           </Reveal>
           <Reveal delay={140} className="justify-self-end w-full max-w-[430px]">
-            <figure className="relative m-0 aspect-[16/8] overflow-hidden rounded-[24px] border border-background-dark/12 bg-background-dark/5">
+            <figure className="relative m-0 aspect-[16/8] overflow-hidden rounded-[32px] border border-background-dark/12 bg-background-dark/5">
               <img {...photography['airport-group-travelers']} sizes="(min-width: 1440px) 430px, (min-width: 1024px) 32vw, (min-width: 768px) 430px, calc(100vw - 40px)" decoding="async" alt="A group of happy business travelers walking through an airport with carry-on luggage" className="size-full object-cover object-[70%_center]" loading="lazy" />
             </figure>
           </Reveal>
@@ -47,8 +46,7 @@ export function DesignedForEveryone() {
             <Reveal
               key={card.eyebrow}
               delay={i * 80}
-              className="rounded-[32px] border border-background-dark/14 bg-white p-7"
-              style={{ '--color-background-dark': '#150b08' } as CSSProperties}
+              className="on-light-surface rounded-[32px] border border-background-dark/14 bg-white p-7"
             >
               <div className="font-mi-body text-[.62rem] font-bold tracking-[0.12em] text-mi-scarlet">
                 {card.eyebrow}

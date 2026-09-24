@@ -38,7 +38,7 @@ export function FeaturedArticles() {
                 <div className="font-mi-body text-[.62rem] font-bold tracking-[0.12em] text-mi-orange">
                   ARTICLE
                 </div>
-                <h2 className="mt-3.5 text-pretty font-mi-accent text-[clamp(1.2rem,2.2vw,1.7rem)] leading-[1.25] font-bold tracking-[-0.03em]">
+                <h2 className="mt-3.5 text-pretty font-heading text-[clamp(1.2rem,2.2vw,1.7rem)] leading-[1.25] font-bold tracking-[-0.03em]">
                   {article.title}
                 </h2>
               </div>

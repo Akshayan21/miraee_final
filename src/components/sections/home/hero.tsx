@@ -4,7 +4,7 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { Reveal } from '@/components/motion/reveal';
 import { Magnetic } from '@/components/motion/magnetic';
-import { HeroVortexBackground } from '@/components/ui/hero-vortex-background';
+import { HeroBackground } from '@/components/ui/hero-background';
 import heroImage from '@/assets/hero-section-image.webp';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -32,25 +32,25 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden pt-[clamp(120px,16vh,180px)] pb-[clamp(56px,8vw,96px)]">
-      <div className="pointer-events-none absolute inset-0 opacity-30"><HeroVortexBackground /></div>
+      <HeroBackground />
       <div className="mx-auto grid w-[min(1360px,100%-2*clamp(20px,4vw,64px))] items-center gap-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] lg:gap-6">
         <div className="min-w-0 max-w-[52rem]">
-          <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
+          <Reveal visibleOnLoad className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
             A PRIVATE TRAVEL ASSISTANT FOR EVERY EMPLOYEE
           </Reveal>
-          <Reveal delay={80}>
-            <h1 className="mt-6 text-balance font-mi-display text-[clamp(2rem,4vw,3.6rem)] leading-[1.05] font-black tracking-[-0.02em] text-mi-cream uppercase">
-              The Travel &amp; Expense Platform That Actually Does the Work.
+          <Reveal visibleOnLoad delay={80}>
+            <h1 className="mt-6 text-balance font-heading text-mi-cream text-hero font-semibold">
+              The travel &amp; expense platform that actually does the work.
             </h1>
           </Reveal>
-          <Reveal delay={160}>
+          <Reveal visibleOnLoad delay={160}>
             <p className="mt-8 max-w-[46ch] text-pretty font-mi-body text-[clamp(1.05rem,1.35vw,1.26rem)] leading-[1.55] text-mi-cream/74">
               Meet Miraee. State your intent, and our AI agents search, book, pay, coordinate,
               recover, and file your expenses. Effortless for travelers, strictly controlled for
               finance, and rewarding for everyone.
             </p>
           </Reveal>
-          <Reveal delay={240} className="mt-8 flex flex-wrap gap-3">
+          <Reveal visibleOnLoad delay={240} className="mt-8 flex flex-wrap gap-3">
             <Magnetic>
               <Link
                 to="/contact"
@@ -68,12 +68,12 @@ export function Hero() {
               </a>
             </Magnetic>
           </Reveal>
-          <Reveal delay={320} className="mt-10 font-mi-script text-[clamp(2rem,3vw,3rem)] leading-[1.35] text-mi-orange">
+          <Reveal visibleOnLoad delay={320} className="mt-10 font-heading text-xl font-medium tracking-[-0.02em] leading-[1.4] text-mi-orange">
             Travel Limitless
           </Reveal>
         </div>
 
-        <Reveal delay={160} className="relative min-w-0">
+        <Reveal visibleOnLoad delay={160} className="relative min-w-0">
           <div ref={stageRef} className="relative">
             <div
               aria-hidden="true"

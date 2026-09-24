@@ -9,7 +9,7 @@ export function ClosingCta() {
       <div className="mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
         <div className="mb-[clamp(40px,6vw,72px)] h-0.5 bg-gradient-to-r from-mi-orange via-mi-amber to-mi-rust" />
         <Reveal>
-          <h2 className="max-w-[24ch] text-balance font-mi-accent text-[clamp(2.4rem,4.5vw,4rem)] leading-[1.1] font-semibold tracking-[-0.045em]">
+          <h2 className="max-w-[24ch] text-balance font-heading text-section font-semibold">
             Give your team their time back.
           </h2>
         </Reveal>

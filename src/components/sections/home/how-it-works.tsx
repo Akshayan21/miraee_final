@@ -3,6 +3,7 @@ import { ArrowRight, Check, CheckCheck, Hotel, MessageCircle, Plane, ReceiptText
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import './how-it-works.css';
+import logo from '@/assets/Miraee_Logo.png';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -129,7 +130,7 @@ export function HowItWorks() {
         {STEPS.map((step, index) => <div key={step.name} id={`journey-panel-${index}`} role="tabpanel" aria-labelledby={`journey-tab-${index}`} tabIndex={active === index ? 0 : -1} aria-hidden={active !== index} inert={active !== index} className={`journey-story ${active === index ? 'is-active' : ''}`}><span className="journey-chapter">0{index + 1} / {step.name}</span><h3>{step.title}</h3><p>{step.description}</p><div className="journey-prompt"><MessageCircle size={18} /><blockquote>“{step.message}”</blockquote></div></div>)}
         <button className="journey-next" type="button" onClick={() => selectStage((active + 1) % 4)}>{active === 3 ? 'Take the journey again' : `And then? ${STEPS[active + 1].name}`}<ArrowRight size={17} /></button>
       </div><div className="journey-passport" aria-label="Illustrative Tokyo trip preview">
-        <div className="journey-ticket-top"><span><Sparkles size={16} /> Miraee</span><span>Your journey, together</span></div>
+        <div className="journey-ticket-top"><span><img src={logo} alt="Miraee" className="journey-logo" /></span><span>Your journey, together</span></div>
         <div className="journey-destination"><div><span>Your next chapter</span><strong>Tokyo.</strong><p>Aoyama review · Tuesday — Thursday</p></div><div className="journey-stamp" aria-hidden="true"><Plane size={23} strokeWidth={1.2} /><span>TYO</span></div></div>
         <div className="journey-ticket-seam" />
         <div className="journey-detail-stack">{STEPS.map((step, index) => <div key={step.name} className={`journey-detail ${active === index ? 'is-active' : ''}`} aria-hidden={active !== index} inert={active !== index}><div className="journey-card-label"><span><span className="journey-status-dot" />{step.status}</span><span><ShieldCheck size={13} /> In policy</span></div><TripDetail active={index} /><div className="journey-agent-reply"><Sparkles size={15} /><p>{step.reply}</p></div></div>)}</div>
@@ -141,7 +142,7 @@ export function HowItWorks() {
           <span className="journey-chapter">0{index + 1} / {step.name}</span>
           <h3 id={`mobile-journey-${index}`}>{step.title}</h3><p>{step.description}</p>
           <blockquote>“{step.message}”</blockquote>
-          <div className="journey-passport"><div className="journey-ticket-top"><span><Sparkles size={16} /> Miraee</span><span>Tokyo · Tue — Thu</span></div><div className="journey-mobile-detail"><div className="journey-card-label"><span>{step.status}</span><span><ShieldCheck size={14} /> In policy</span></div><TripDetail active={index} /><div className="journey-agent-reply"><Sparkles size={16} /><p>{step.reply}</p></div></div></div>
+          <div className="journey-passport"><div className="journey-ticket-top"><span><img src={logo} alt="Miraee" className="journey-logo" /></span><span>Tokyo · Tue — Thu</span></div><div className="journey-mobile-detail"><div className="journey-card-label"><span>{step.status}</span><span><ShieldCheck size={14} /> In policy</span></div><TripDetail active={index} /><div className="journey-agent-reply"><Sparkles size={16} /><p>{step.reply}</p></div></div></div>
         </article>)}
       </div>
       <footer className="journey-footer"><Sparkles size={15} /><span>Voice, chat or avatar. It remembers your preferences.</span></footer>

@@ -57,11 +57,19 @@
   --font-body: 'Inter Variable', system-ui, sans-serif;
   --font-sans: var(--font-body);
 
-  /* Dark-theme marketing typography (temp/*.dc.html mockups) — additive */
-  --font-mi-display: 'Roboto Condensed', system-ui, sans-serif;
-  --font-mi-body: 'Outfit', system-ui, sans-serif;
-  --font-mi-accent: 'Manrope', system-ui, sans-serif;
-  --font-mi-script: 'Borel', cursive;
+  /* Compatibility aliases: every existing component uses the same two families. */
+  --font-mi-display: var(--font-heading);
+  --font-mi-body: var(--font-body);
+  --font-mi-accent: var(--font-heading);
+  --font-mi-script: var(--font-heading);
+
+  /* Shared responsive marketing heading scale. */
+  --text-hero: clamp(2.125rem, 4.5vw, 4rem);
+  --text-hero--line-height: 1.1;
+  --text-hero--letter-spacing: -0.04em;
+  --text-section: clamp(1.75rem, 3.2vw, 2.75rem);
+  --text-section--line-height: 1.15;
+  --text-section--letter-spacing: -0.035em;
 
   /* Radius + shadow tokens (§20) */
   --radius-panel: 18px;

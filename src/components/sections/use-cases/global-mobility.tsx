@@ -28,7 +28,7 @@ export function GlobalMobility() {
               GLOBAL MOBILITY
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-4.5 max-w-[16ch] font-mi-accent text-[clamp(1.8rem,3.4vw,2.9rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+              <h2 className="mt-4.5 max-w-[16ch] font-heading text-section font-semibold text-balance">
                 One platform, every border.
               </h2>
             </Reveal>

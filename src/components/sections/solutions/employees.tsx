@@ -92,7 +92,7 @@ export function Employees() {
               FOR EMPLOYEES
             </div>
             <div>
-              <h2 className="mx-auto mt-4.5 max-w-[26ch] font-mi-accent text-[clamp(1.8rem,3.4vw,3rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+              <h2 className="mx-auto mt-4.5 max-w-[26ch] font-heading text-section font-semibold text-balance">
                 Meet your hands-free travel assistant.
               </h2>
             </div>

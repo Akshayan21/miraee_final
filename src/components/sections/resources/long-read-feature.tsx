@@ -31,7 +31,7 @@ export function LongReadFeature() {
           GUIDES &amp; REPORTS · /resources/guides
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-4.5 max-w-[24ch] text-balance font-mi-accent text-[clamp(1.9rem,3.8vw,3.2rem)] leading-[1.04] font-bold tracking-[-0.04em] text-background-dark">
+          <h2 className="mt-4.5 max-w-[24ch] text-balance font-heading text-background-dark text-section font-semibold">
             Go deep on the shift to agentic travel.
           </h2>
         </Reveal>

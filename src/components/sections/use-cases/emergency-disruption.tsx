@@ -23,7 +23,7 @@ export function EmergencyDisruption() {
           <Reveal className="relative order-2 aspect-4/3 overflow-hidden rounded-[32px] border border-mi-cream/12 bg-mi-cream/4">
             <img
               src="https://images.unsplash.com/photo-1517400508447-f8dd518b86db?auto=format&fit=crop&w=1600&q=70"
-              alt="Emergency and disruption"
+              alt="A traveler checking a flight status board during a delay"
               className="size-full object-cover"
               loading="lazy"
             />
@@ -33,7 +33,7 @@ export function EmergencyDisruption() {
               EMERGENCY &amp; DISRUPTION
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-4.5 max-w-[20ch] font-mi-accent text-[clamp(1.8rem,3.4vw,2.9rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+              <h2 className="mt-4.5 max-w-[20ch] font-heading text-section font-semibold text-balance">
                 When plans break, one thread holds.
               </h2>
             </Reveal>

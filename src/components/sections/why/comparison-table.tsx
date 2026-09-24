@@ -16,7 +16,7 @@ export function ComparisonTable() {
       <div className="mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
         <div className="mb-[clamp(32px,5vw,64px)] h-0.5 bg-gradient-to-r from-mi-orange via-mi-amber to-mi-rust" />
         <Reveal>
-          <h2 className="font-mi-accent text-[clamp(1.9rem,3.6vw,3.2rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+          <h2 className="font-heading text-section font-semibold text-balance">
             Same trip. Different operating models.
           </h2>
         </Reveal>

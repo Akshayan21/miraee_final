@@ -30,7 +30,7 @@ export function PlatformDepth() {
           PLATFORM DEPTH
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-4.5 max-w-[30ch] text-balance font-mi-accent text-[clamp(1.9rem,3.6vw,3.2rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+          <h2 className="mt-4.5 max-w-[30ch] text-balance font-heading text-section font-semibold">
             The Miraee platform adapts. So your people don&rsquo;t have to.
           </h2>
         </Reveal>

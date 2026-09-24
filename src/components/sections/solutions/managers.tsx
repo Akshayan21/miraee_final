@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import { Reveal } from '@/components/motion/reveal';
 
 const PAINS = [
@@ -37,7 +36,7 @@ export function Managers() {
               FOR MANAGERS
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-4.5 max-w-[20ch] font-mi-accent text-[clamp(1.8rem,3.4vw,3rem)] leading-[1.06] font-bold tracking-[-0.04em] text-background-dark">
+              <h2 className="mt-4.5 max-w-[20ch] font-heading text-background-dark text-section font-semibold text-balance">
                 Run the team, not the paperwork.
               </h2>
             </Reveal>
@@ -78,8 +77,7 @@ export function Managers() {
               <Reveal
                 key={card.title}
                 delay={i * 80}
-                className="rounded-[24px] border border-background-dark/14 bg-white p-[22px]"
-                style={{ '--color-background-dark': '#150b08' } as CSSProperties}
+                className="on-light-surface rounded-[24px] border border-background-dark/14 bg-white p-[22px]"
               >
                 <h3 className="m-0 font-mi-body text-[.72rem] font-bold tracking-[0.12em] text-background-dark/50">
                   {card.title}

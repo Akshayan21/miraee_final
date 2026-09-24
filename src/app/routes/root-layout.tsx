@@ -4,6 +4,7 @@ import { useLocation } from 'react-router-dom';
 import { NavBar } from '@/components/navigation/nav-bar';
 import { Footer } from '@/components/footer/footer';
 import { resetLenisScroll, useLenis } from '@/hooks/use-lenis';
+import { SiteParallax } from '@/components/motion/site-parallax';
 
 export default function RootLayout() {
   useLenis();
@@ -26,6 +27,7 @@ export default function RootLayout() {
 
   return (
     <div className="relative isolate flex min-h-svh flex-col">
+      <SiteParallax />
       <NavBar />
       <Outlet />
       <Footer />

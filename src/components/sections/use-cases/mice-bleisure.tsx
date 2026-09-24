@@ -23,7 +23,7 @@ export function MiceBleisure() {
           <Reveal className="relative order-2 aspect-4/3 overflow-hidden rounded-[32px] border border-background-dark/14 bg-background-dark/5">
             <img
               src="https://images.unsplash.com/photo-1500835556837-99ac94a94552?auto=format&fit=crop&w=1600&q=70"
-              alt="MICE and bleisure"
+              alt="Colleagues at an offsite event mixing work and leisure travel"
               className="size-full object-cover"
               loading="lazy"
             />
@@ -33,7 +33,7 @@ export function MiceBleisure() {
               MICE &amp; BLEISURE
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-4.5 max-w-[20ch] font-mi-accent text-[clamp(1.8rem,3.4vw,2.9rem)] leading-[1.06] font-bold tracking-[-0.04em] text-background-dark">
+              <h2 className="mt-4.5 max-w-[20ch] font-heading text-background-dark text-section font-semibold text-balance">
                 Beyond standard business travel.
               </h2>
             </Reveal>

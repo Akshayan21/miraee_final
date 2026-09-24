@@ -8,7 +8,7 @@ export function ClosingCta() {
     <section className="border-t border-mi-cream/8 bg-[radial-gradient(70%_90%_at_80%_100%,rgba(242,92,5,.18),rgba(17,14,9,0)_65%)] py-[clamp(80px,11vw,150px)]">
       <div className="mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
         <Reveal>
-          <h2 className="max-w-[22ch] font-mi-display text-[clamp(2.2rem,5.6vw,4.4rem)] leading-[.98] font-black tracking-[-0.02em] uppercase">
+          <h2 className="max-w-[22ch] font-heading text-section font-semibold text-balance">
             Ask us anything about the guardrails.
           </h2>
         </Reveal>
