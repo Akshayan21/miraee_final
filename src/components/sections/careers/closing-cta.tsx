@@ -8,7 +8,7 @@ export function ClosingCta() {
     <section className="bg-[linear-gradient(120deg,#F25C05,var(--color-mi-amber-text)_55%,#DE5533)] py-[clamp(80px,11vw,150px)] text-brand-dark">
       <div className="mx-auto flex w-[min(1360px,100%-2*clamp(20px,4vw,64px))] flex-wrap items-end justify-between gap-8">
         <Reveal>
-          <h2 className="max-w-[20ch] font-mi-display text-[clamp(2.2rem,5.4vw,4.4rem)] leading-[.98] font-black tracking-[-0.02em] text-brand-dark uppercase">
+          <h2 className="max-w-[20ch] font-heading text-brand-dark text-section font-semibold text-balance">
             Join a team fixing a broken industry.
           </h2>
         </Reveal>

@@ -1,5 +1,12 @@
 @custom-variant dark (&:is(.dark *));
 
+/* A card that is always a white/light surface regardless of site theme (e.g. a permanently
+   light callout on a dark page). `text-background-dark` normally flips to a near-white
+   value in light theme, which would be invisible here, so pin it back to the dark hex. */
+.on-light-surface {
+  --color-background-dark: #150b08;
+}
+
 /* Keep keyboard focus consistent across links and CTAs, including utility-styled buttons. */
 :is(a[href], button, [role='button'], input[type='submit'], input[type='button']):focus-visible {
   outline: 2px solid var(--color-mi-orange);

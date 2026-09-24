@@ -73,11 +73,11 @@ export function Footer() {
 
       <div className="mx-auto mt-[clamp(40px,6vw,72px)] flex w-[min(1360px,100%-2*clamp(20px,4vw,64px))] flex-wrap justify-between gap-3 border-t border-mi-cream/10 pt-6 text-[.75rem] leading-[1.6] font-semibold tracking-[0.06em] text-mi-cream/65">
         <span>© 2026 Miraee · a Tabhi group company</span>
-        <Link to="/terms-and-conditions" className="text-mi-cream/70 hover:text-mi-orange focus-visible:outline-2 focus-visible:outline-mi-orange">Terms & Conditions</Link>
         <div className="flex flex-wrap gap-x-5 gap-y-2">
-          <span>Mondee One · Miraee · Abhee — three products, one platform</span>
-          <Link to="/privacy-policy" className="text-inherit no-underline transition-colors hover:text-mi-orange">Privacy Policy</Link>
+          <Link to="/terms-and-conditions" className="text-mi-cream/70 hover:text-mi-orange focus-visible:outline-2 focus-visible:outline-mi-orange">Terms & Conditions</Link>
+          <Link to="/privacy-policy" className="text-mi-cream/70 hover:text-mi-orange focus-visible:outline-2 focus-visible:outline-mi-orange">Privacy Policy</Link>
         </div>
+        <span>Mondee One · Miraee · Abhee — three products, one platform</span>
       </div>
     </footer>
   );

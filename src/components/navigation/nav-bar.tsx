@@ -8,7 +8,7 @@ import { useTheme } from '@/hooks/use-theme';
 import logo from '@/assets/Miraee_Logo.png';
 
 export function NavBar() {
-  const [scrolled, setScrolled] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
   const [open, setOpen] = useState(false);
   const { theme, toggleTheme } = useTheme();
   const { pathname } = useLocation();
@@ -24,9 +24,22 @@ export function NavBar() {
     return () => desktop.removeEventListener('change', closeOnDesktop);
   }, []);
 
+  // Reference behavior: the pill widens at rest, narrows and drops its link
+  // row once you scroll past it, and re-widens the moment you scroll back up
+  // — direction-aware, not just a scrolled/not-scrolled toggle.
   useEffect(() => {
+    let lastY = window.scrollY;
     function onScroll() {
-      setScrolled(window.scrollY > 12);
+      const y = window.scrollY;
+      const delta = y - lastY;
+      lastY = y;
+      if (y < 80) {
+        setCollapsed(false);
+      } else if (delta > 4) {
+        setCollapsed(true);
+      } else if (delta < -4) {
+        setCollapsed(false);
+      }
     }
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
@@ -41,29 +54,39 @@ export function NavBar() {
     return () => window.removeEventListener('keydown', onEsc);
   }, []);
 
+  const compact = collapsed && !open;
+
   return (
     <>
-      <header
-        data-site-header
-        className={cn(
-          'fixed inset-x-0 top-0 z-[100] border-b py-3.5 transition-[background-color,backdrop-filter,padding,border-color] duration-500 [will-change:background-color,backdrop-filter,padding] sm:py-[18px]',
-          (scrolled || pathname === '/terms-and-conditions' || pathname === '/privacy-policy')
-            ? 'border-mi-cream/10 bg-background-dark/85 py-2.5 backdrop-blur-md sm:py-3'
-            : 'border-mi-cream/10 bg-background-dark',
-        )}
-      >
-        <div className="mx-auto flex w-[min(1360px,100%-2*clamp(16px,4vw,64px))] items-center gap-3 sm:gap-6">
+      <header data-site-header className="fixed inset-x-0 top-0 z-[100] flex justify-center px-4 pt-3 sm:pt-4">
+        <div
+          className={cn(
+            'flex min-w-0 items-center gap-2 rounded-full border border-mi-cream/12 bg-background-dark/92 shadow-[0_16px_44px_rgba(0,0,0,0.28)] backdrop-blur-xl transition-[width,height,padding,box-shadow] duration-500 ease-(--motion-ease) sm:gap-3',
+            compact
+              ? 'h-14 w-[min(440px,100%-1rem)] px-2.5'
+              : 'h-16 w-[min(1360px,100%-2*clamp(16px,4vw,64px))] px-3 sm:h-[68px] sm:px-4',
+          )}
+        >
           <Link
             to="/"
             className="block shrink-0 opacity-100 transition-opacity hover:opacity-75"
             onClick={() => setOpen(false)}
           >
-            <img src={logo} alt="Miraee" className="h-6 w-auto sm:h-7" width={110} height={28} />
+            <img
+              src={logo}
+              alt="Miraee"
+              className={cn('w-auto transition-[height] duration-500 ease-(--motion-ease)', compact ? 'h-5' : 'h-6 sm:h-7')}
+              width={110}
+              height={28}
+            />
           </Link>
 
           <nav
             aria-label="Primary"
-            className="hidden flex-1 items-center justify-center gap-1 whitespace-nowrap font-mi-body text-sm font-semibold xl:flex"
+            className={cn(
+              'hidden overflow-hidden whitespace-nowrap font-mi-body text-sm font-semibold transition-[max-width,opacity] duration-500 ease-(--motion-ease) xl:flex xl:flex-1 xl:items-center xl:justify-center',
+              compact ? 'max-w-0 opacity-0' : 'max-w-[720px] opacity-100',
+            )}
           >
             {primaryNav.map((item) => {
               const active = pathname === item.href;
@@ -88,22 +111,29 @@ export function NavBar() {
               type="button"
               aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
               onClick={toggleTheme}
-              className="flex size-10 flex-none items-center justify-center rounded-2xl border border-mi-cream/16 bg-transparent text-mi-cream transition-colors hover:border-mi-cream/30 hover:bg-mi-cream/5 sm:size-[42px]"
+              className="flex size-10 flex-none items-center justify-center rounded-full border border-mi-cream/16 bg-transparent text-mi-cream transition-colors hover:border-mi-cream/30 hover:bg-mi-cream/5 sm:size-[42px]"
             >
               {theme === 'dark' ? <Sun className="size-4.5" aria-hidden="true" /> : <Moon className="size-4.5" aria-hidden="true" />}
             </button>
 
-            <a
-              href={signInCta.href}
-              className="hidden h-10 items-center rounded-2xl border border-mi-cream/16 px-3.5 font-mi-body text-[.76rem] font-bold tracking-[0.02em] whitespace-nowrap text-mi-cream no-underline transition-colors hover:border-mi-cream/30 hover:bg-mi-cream/5 sm:flex sm:h-[42px] sm:px-5 sm:text-[.8rem]"
+            <div
+              className={cn(
+                'hidden overflow-hidden transition-[max-width,opacity] duration-500 ease-(--motion-ease) sm:block',
+                compact ? 'max-w-0 opacity-0' : 'max-w-[180px] opacity-100',
+              )}
             >
-              {signInCta.label}
-            </a>
+              <a
+                href={signInCta.href}
+                className="flex h-10 items-center rounded-full border border-mi-cream/16 px-3.5 font-mi-body text-[.76rem] font-bold tracking-[0.02em] whitespace-nowrap text-mi-cream no-underline transition-colors hover:border-mi-cream/30 hover:bg-mi-cream/5 sm:h-[42px] sm:px-5 sm:text-[.8rem]"
+              >
+                {signInCta.label}
+              </a>
+            </div>
 
             <Magnetic>
               <Link
                 to={primaryCta.href}
-                className="hidden items-center gap-2 rounded-2xl bg-mi-scarlet px-3.5 font-mi-body text-[.76rem] font-bold tracking-[0.02em] whitespace-nowrap text-white no-underline transition-transform active:scale-95 sm:inline-flex sm:h-[42px] sm:px-5 sm:text-[.8rem]"
+                className="hidden items-center gap-2 rounded-full bg-mi-scarlet px-3.5 font-mi-body text-[.76rem] font-bold tracking-[0.02em] whitespace-nowrap text-white no-underline transition-transform active:scale-95 sm:inline-flex sm:h-[42px] sm:px-5 sm:text-[.8rem]"
               >
                 {primaryCta.label}
               </Link>
@@ -115,7 +145,7 @@ export function NavBar() {
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
               aria-controls="site-menu"
-              className="relative flex size-10 flex-none items-center justify-center rounded-2xl border border-mi-cream/16 bg-transparent transition-colors hover:border-mi-cream/30 hover:bg-mi-cream/5 sm:size-[42px] xl:hidden"
+              className="relative flex size-10 flex-none items-center justify-center rounded-full border border-mi-cream/16 bg-transparent transition-colors hover:border-mi-cream/30 hover:bg-mi-cream/5 sm:size-[42px] xl:hidden"
             >
               <i
                 className={cn(

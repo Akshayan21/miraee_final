@@ -10,7 +10,7 @@ export function SolutionsClosingCta() {
     >
       <div className="mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
         <Reveal>
-          <h2 className="max-w-[24ch] text-balance font-mi-display text-[clamp(2.2rem,5.6vw,4.4rem)] leading-[.98] font-black tracking-[-0.02em] uppercase">
+          <h2 className="max-w-[24ch] text-balance font-heading text-section font-semibold">
             Every kind of trip your company takes.
           </h2>
         </Reveal>

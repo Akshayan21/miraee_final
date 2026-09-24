@@ -31,7 +31,7 @@ export function HowWeBuild() {
           HOW WE BUILD
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-4.5 max-w-[24ch] font-mi-accent text-[clamp(1.9rem,3.6vw,3.2rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+          <h2 className="mt-4.5 max-w-[24ch] font-heading text-section font-semibold text-balance">
             Agents that do the work, not chat about it.
           </h2>
         </Reveal>

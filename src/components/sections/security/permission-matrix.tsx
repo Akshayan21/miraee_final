@@ -1,4 +1,3 @@
-import type { CSSProperties } from 'react';
 import { Reveal } from '@/components/motion/reveal';
 
 const ROWS = [
@@ -35,7 +34,7 @@ export function PermissionMatrix() {
     <section className="bg-mi-cream py-[clamp(56px,8vw,110px)] text-background-dark">
       <div className="mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
         <Reveal>
-          <h2 className="max-w-[26ch] font-mi-accent text-[clamp(1.9rem,3.8vw,3.2rem)] leading-[1.04] font-bold tracking-[-0.04em] text-background-dark">
+          <h2 className="max-w-[26ch] font-heading text-background-dark text-section font-semibold text-balance">
             What the agents may do, must ask about, and may never do.
           </h2>
         </Reveal>
@@ -73,8 +72,7 @@ export function PermissionMatrix() {
           </Reveal>
           <Reveal
             delay={80}
-            className="rounded-[32px] border border-background-dark/14 bg-white p-7"
-            style={{ '--color-background-dark': '#150b08' } as CSSProperties}
+            className="on-light-surface rounded-[32px] border border-background-dark/14 bg-white p-7"
           >
             <h3 className="m-0 font-mi-body text-[.72rem] font-bold tracking-[0.12em] text-background-dark/50">
               HUMAN IN THE LOOP

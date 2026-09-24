@@ -13,7 +13,7 @@ export function TwoViews() {
           ONE PLATFORM, TWO VIEWS
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-4.5 font-mi-accent text-[clamp(1.9rem,3.6vw,3.2rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+          <h2 className="mt-4.5 font-heading text-section font-semibold text-balance">
             Two access points. One experience.
           </h2>
         </Reveal>

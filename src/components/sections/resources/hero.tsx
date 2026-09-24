@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { cn } from '@/lib/utils';
 import { Reveal } from '@/components/motion/reveal';
-import { HeroVortexBackground } from '@/components/ui/hero-vortex-background';
+import { HeroBackground } from '@/components/ui/hero-background';
 
 const TABS = ['Blog', 'Guides', 'Webinars', 'Documentation'];
 
@@ -17,17 +17,17 @@ export function Hero() {
 
   return (
     <section className="relative overflow-hidden pt-[clamp(120px,16vh,180px)] pb-[clamp(40px,6vw,64px)]">
-      <HeroVortexBackground />
+      <HeroBackground />
       <div className="mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
-        <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
+        <Reveal visibleOnLoad className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
           RESOURCES
         </Reveal>
-        <Reveal delay={80}>
-          <h1 className="mt-6 text-balance font-mi-display text-[clamp(2.4rem,6vw,5.2rem)] leading-[.96] font-black tracking-[-0.02em] text-mi-cream uppercase">
-            Insights for the Agentic Era.
+        <Reveal visibleOnLoad delay={80}>
+          <h1 className="mt-6 text-balance font-heading text-mi-cream text-hero font-semibold">
+            Insights for the agentic era.
           </h1>
         </Reveal>
-        <Reveal delay={160} className="mt-9 flex flex-wrap gap-2.5">
+        <Reveal visibleOnLoad delay={160} className="mt-9 flex flex-wrap gap-2.5">
           {TABS.map((tab, i) => (
             <button
               key={tab}
@@ -44,7 +44,7 @@ export function Hero() {
             </button>
           ))}
         </Reveal>
-        <Reveal delay={220} className="mt-5 font-mi-body text-[.9rem] leading-[1.5] font-medium text-mi-cream/60">
+        <Reveal visibleOnLoad delay={220} className="mt-5 font-mi-body text-[.9rem] leading-[1.5] font-medium text-mi-cream/60">
           {NOTES[active]}
         </Reveal>
       </div>

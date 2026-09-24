@@ -54,7 +54,7 @@ export function Capabilities() {
           PLATFORM CAPABILITIES
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-4.5 max-w-[24ch] text-balance font-mi-accent text-[clamp(1.9rem,3.6vw,3.2rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+          <h2 className="mt-4.5 max-w-[24ch] text-balance font-heading text-section font-semibold">
             Everything a travel program needs, one platform.
           </h2>
         </Reveal>

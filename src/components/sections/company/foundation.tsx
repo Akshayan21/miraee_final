@@ -64,7 +64,7 @@ export function Foundation() {
             </p>
           </Reveal>
           <Reveal delay={80}>
-            <h2 className="max-w-[22ch] font-mi-accent text-[clamp(1.8rem,3.4vw,2.9rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+            <h2 className="max-w-[22ch] font-heading text-section font-semibold text-balance">
               We ran the trips. We saw the handoffs.
             </h2>
             <p className="mt-4.5 max-w-[44ch] font-mi-body text-[1.02rem] leading-[1.6] text-mi-cream/74">

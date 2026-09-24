@@ -12,7 +12,7 @@ export function SavingsLoop() {
     <section className="bg-[radial-gradient(70%_70%_at_15%_20%,rgba(242,92,5,.14),rgba(17,14,9,0)_65%)] py-[clamp(64px,9vw,120px)]">
       <div className="mx-auto w-[min(1360px,100%-2*clamp(20px,4vw,64px))]">
         <Reveal>
-          <h2 className="max-w-[26ch] font-mi-accent text-[clamp(1.9rem,3.6vw,3.2rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+          <h2 className="max-w-[26ch] font-heading text-section font-semibold text-balance">
             Savings that compound on their own.
           </h2>
         </Reveal>

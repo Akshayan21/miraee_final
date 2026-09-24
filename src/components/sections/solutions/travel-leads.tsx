@@ -183,7 +183,7 @@ export function TravelLeads() {
               FOR TRAVEL LEADS
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-4.5 max-w-[20ch] font-mi-accent text-[clamp(1.8rem,3.4vw,3rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+              <h2 className="mt-4.5 max-w-[20ch] font-heading text-section font-semibold text-balance">
                 Run a program, not a booking desk.
               </h2>
             </Reveal>

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Reveal } from '@/components/motion/reveal';
 import { Magnetic } from '@/components/motion/magnetic';
 import { CONSOLE_PIN_STYLE } from '@/lib/dark-page';
-import { HeroVortexBackground } from '@/components/ui/hero-vortex-background';
+import { HeroBackground } from '@/components/ui/hero-background';
 
 const ROWS: [string, number, number, string][] = [
   ['LHR → JFK · business · 42 trips', 186400, 148900, 'Tabhi wholesale'],
@@ -137,24 +137,24 @@ function AuditConsole() {
 export function Hero() {
   return (
     <section className="relative overflow-hidden pt-[clamp(120px,16vh,180px)] pb-[clamp(56px,8vw,96px)]">
-      <HeroVortexBackground />
+      <HeroBackground />
       <div className="mx-auto grid w-[min(1360px,100%-2*clamp(20px,4vw,64px))] grid-cols-[repeat(auto-fit,minmax(min(420px,100%),1fr))] items-end gap-[clamp(32px,4vw,64px)]">
         <div className="min-w-0">
-          <Reveal className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
+          <Reveal visibleOnLoad className="flex items-center gap-3 font-mi-body text-[.72rem] font-bold tracking-[0.14em] text-mi-cream/45">
             PRICING
           </Reveal>
-          <Reveal delay={80}>
-            <h1 className="mt-6 max-w-[20ch] text-balance font-mi-display text-[clamp(2.4rem,6vw,5.4rem)] leading-[.96] font-black tracking-[-0.02em] uppercase">
+          <Reveal visibleOnLoad delay={80}>
+            <h1 className="mt-6 max-w-[20ch] text-balance font-heading text-hero font-semibold">
               Prove the savings before you commit.
             </h1>
           </Reveal>
-          <Reveal delay={160}>
+          <Reveal visibleOnLoad delay={160}>
             <p className="mt-8 max-w-[52ch] text-pretty font-mi-body text-[clamp(1.05rem,1.3vw,1.24rem)] leading-[1.55] text-mi-cream/74">
               We don&rsquo;t guess your ROI. We take your last 12 months of booking and expense
               data and re-price it to find your exact savings potential.
             </p>
           </Reveal>
-          <Reveal delay={240} className="mt-8">
+          <Reveal visibleOnLoad delay={240} className="mt-8">
             <Magnetic>
               <Link
                 to="/contact"
@@ -166,7 +166,7 @@ export function Hero() {
           </Reveal>
         </div>
 
-        <Reveal delay={120} className="min-w-0">
+        <Reveal visibleOnLoad delay={120} className="min-w-0">
           <AuditConsole />
         </Reveal>
       </div>

@@ -32,7 +32,7 @@ export function TabhiAdvantage() {
           THE TABHI ADVANTAGE
         </Reveal>
         <Reveal delay={80}>
-          <h2 className="mt-4.5 font-mi-accent text-[clamp(1.9rem,3.6vw,3.2rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+          <h2 className="mt-4.5 font-heading text-section font-semibold text-balance">
             Global reach. Personal execution.
           </h2>
         </Reveal>
@@ -50,12 +50,12 @@ export function TabhiAdvantage() {
           </figure>
         </Reveal>
 
-        <div className="mt-[clamp(32px,5vw,56px)] grid grid-cols-[repeat(auto-fit,minmax(min(260px,100%),1fr))] gap-6">
+        <div className="mt-[clamp(32px,5vw,56px)] grid grid-cols-1 divide-y divide-mi-cream/12 border-y border-mi-cream/12 sm:grid-cols-4 sm:divide-x sm:divide-y-0">
           {CARDS.map((card, i) => (
             <Reveal
               key={card.label}
               delay={i * 80}
-              className="flex flex-col gap-3.5 rounded-[32px] border border-mi-cream/12 bg-mi-cream/3.5 p-6.5"
+              className="flex flex-col gap-3.5 py-6.5 sm:px-6.5 sm:first:pl-0 sm:last:pr-0"
             >
               <b className="font-mi-body text-[.66rem] font-bold tracking-[0.12em] text-mi-orange">
                 {card.label}

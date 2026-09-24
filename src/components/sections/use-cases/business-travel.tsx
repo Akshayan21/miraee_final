@@ -26,7 +26,7 @@ export function BusinessTravel() {
               BUSINESS TRAVEL
             </Reveal>
             <Reveal delay={80}>
-              <h2 className="mt-4.5 max-w-[20ch] font-mi-accent text-[clamp(1.8rem,3.4vw,2.9rem)] leading-[1.06] font-bold tracking-[-0.035em]">
+              <h2 className="mt-4.5 max-w-[20ch] font-heading text-section font-semibold text-balance">
                 The everyday trip, made effortless.
               </h2>
             </Reveal>
@@ -55,7 +55,7 @@ export function BusinessTravel() {
           >
             <img
               src="https://images.unsplash.com/photo-1504150558240-0b4fd8946624?auto=format&fit=crop&w=1600&q=70"
-              alt="Business travel"
+              alt="A business traveler checking their itinerary before a flight"
               className="size-full object-cover"
               loading="lazy"
             />

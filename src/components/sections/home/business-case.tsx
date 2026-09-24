@@ -22,7 +22,7 @@ export function BusinessCase() {
         </Reveal>
         <div className="mt-[clamp(28px,4vw,52px)] grid items-center gap-[clamp(32px,5vw,80px)] lg:grid-cols-[minmax(0,.9fr)_minmax(420px,1.1fr)]">
           <Reveal delay={80} className="lg:pb-8">
-            <h2 className="max-w-[16ch] text-balance font-mi-accent text-[clamp(2.5rem,4.7vw,4.35rem)] leading-[1.1] font-semibold tracking-[-0.055em] text-mi-cream">
+            <h2 className="max-w-[16ch] text-balance font-heading text-mi-cream text-section font-semibold">
               Loved by employees. Trusted by finance.
             </h2>
             <div aria-hidden="true" className="mt-8 h-px w-20 bg-mi-orange" />

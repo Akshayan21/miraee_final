@@ -92,7 +92,7 @@ export function RoleGrid() {
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); setActive(i); }
                 }}
-                className="relative cursor-pointer overflow-hidden rounded-[24px] outline-none focus-visible:ring-2 focus-visible:ring-mi-orange focus-visible:ring-offset-4 transition-[flex-grow] duration-500 ease-(--motion-ease)"
+                className="relative cursor-pointer overflow-hidden rounded-[32px] outline-none focus-visible:ring-2 focus-visible:ring-mi-orange focus-visible:ring-offset-4 transition-[flex-grow] duration-500 ease-(--motion-ease)"
                 style={{ flexGrow: isActive ? 3.4 : 1, flexBasis: 0, minWidth: 0 }}
               >
                 <img
